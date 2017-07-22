@@ -9,7 +9,7 @@ import {
   导入css与请求	
 */
 import '../Css/home.css'
-import 'whatwg-fetch'
+import './fetch'
 /**
   导入css与请求end	
 */
@@ -17,16 +17,19 @@ class Home extends React.Component{
 	constructor (){
 		super()
 		this.state={
-			nav:["走进八马","会员专区","营销网络","新闻动态","八马产品","招商加盟"],
+			nav:["走进八马1","会员专区","营销网络","新闻动态","八马产品","招商加盟"],
 			navE:["inside BAMA","inside BAMA","inside BAMA","inside BAMA","inside BAMA","inside BAMA"],
-			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3]},{con:[1,2,3,4,5,6]}],
+			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3,4]},{con:[1,2,3,4,5,6]}],
 			links:["inside","vip","Marketing","news","product","join"],
 			colors:["green","blue","#00CACA","red","#5B00AE"],
-			images:["../Images/1(1).jpg","../Images/1(2).jpg","../Images/1(3).jpg","../Images/1(4).jpg","../Images/1(5).jpg","../Images/1.jpg"],
+			images:[],
 			index:0,
 			listdiv:null,
 			title:null,
 			side:null,
+			sparr:null,
+			sparr2:null,
+			divarr:null,
 			speed:0
 		}
 	}
@@ -73,9 +76,9 @@ class Home extends React.Component{
 												{/* 边框 */}
 											</span>
 											<div ref={"divrefs"+i}>
-												{this.state.navlist[i]["con"].map((v,i) =>{
+												{this.state.navlist[i]["con"].map((v,s) =>{
 													return (
-														<p key={"p"+i}>{v}</p>
+														<p key={"p"+s}><Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+s}>{v}</Link></p>
 													)
 												})}
 											</div>
@@ -155,16 +158,9 @@ class Home extends React.Component{
 				x<2?this.refs[this.state.listdiv[x]].classList.remove("showba"):this.refs[this.state.listdiv[x-1]].classList.remove("showba");
 				x<2?this.refs[this.state.title[x]].classList.remove("homepsty"):this.refs[this.state.title[x-1]].classList.remove("homepsty");	
 				x<2?this.refs[this.state.side[x]].classList.remove("onhovepsty"):this.refs[this.state.side[x-1]].classList.remove("onhovepsty");
-			}		
+			}		 
 		} 
 	}
-	//获取数据
-	fetchFn = (url) => {
-        fetch(url)
-            .then((res) => { console.log(res.status);return res.json() })
-            .then((data) => { console.log(data)})
-            .catch((e) => { console.log(e.message) })
-    }
     TransLateTo(num,x,s){
     	num++;
     	s=(num==0)?0:(s+=80)
@@ -180,7 +176,58 @@ class Home extends React.Component{
     	let index=0;	
     	//暂无用了
     }
+    //获取数据
+    fetchFn (url){
+        fetch(url)
+        .then((data)=>data.json())
+        .then((data)=>{
+           console.log(this)
+           this.setState({
+           	nav:eval("("+data[0]["nav"]+")"),
+           	navE:eval("("+data[0]["navE"]+")"),
+      		images:eval("("+data[0]["img"]+")")
+           })
+        })
+        .catch((x)=>{
+            console.log(x)
+        })
+    }
+    fetchFns (url){
+        fetch(url)
+        .then((data)=>data.json())
+        .then((data)=>{
+        	console.log(data)
+           for(var i in data){
+           		data[i]["con"]=eval("("+data[i]["con"]+")")
+           		
+           }
+           console.log(data)
+           this.setState({
+           	   navlist:data
+           })
+        })
+        .catch((x)=>{
+            console.log(x)
+        })
+    }
+    DidMontafert(sparr,sparr2,parr,divarr){
+	//对获取的dom样式处理  并排好队形
+		for(let i=0;i<sparr.length;i++){
+			this.refs[sparr[i]].style.borderRight="none";
+			this.refs[sparr[i]].style.borderColor=this.state.colors[i];
+			this.refs[sparr[i]].style.height=this.refs[divarr[i]].offsetHeight+"px";
+			this.refs[sparr2[i]].style.borderLeft="none";
+			this.refs[sparr2[i]].style.borderColor=this.state.colors[i];
+			this.refs[sparr2[i]].style.height=this.refs[divarr[i]].offsetHeight+"px";
+			if(this.refs[sparr[i]].offsetHeight>100){
+				this.refs[sparr[i]].style.height="100px";
+				this.refs[sparr2[i]].style.height="100px";
+			}
+		}    	
+    }
 	componentDidMount (){
+		this.fetchFn("http://localhost:8006/img/text")
+		this.fetchFns("http://localhost:8006/img/navlists")
 		const My_lis=[]
 		const divarr=[];
 		const sparr=[];
@@ -220,6 +267,11 @@ class Home extends React.Component{
 		Myobj.listdiv=onhoved;
 		Myobj.title=title;
 		Myobj.side=side
+		Myobj.sparr=sparr
+		Myobj.sparr2=sparr2
+		Myobj.divarr=divarr
+
+
 		this.setState(Myobj);
 		console.log(this.state)
 		//对获取的dom样式处理  并排好队形
@@ -237,12 +289,22 @@ class Home extends React.Component{
 				this.refs[sparr2[i]].style.height="100px";
 			}
 		}
+
 		//事件处理
 		this.TransLateTo(ThisNum,My_lis,ThisTime)
 		this.AutoAnima(parr)
+		// this.DidMontafert(sparr,parr,sparr2,divarr)
+	}
+	componentDidUpdate(){
+		//对获取的dom样式处理  并排好队形
+		for(let i=0;i<this.state.sparr.length;i++){
+			this.refs[this.state.sparr[i]].style.height=this.refs[this.state.divarr[i]].offsetHeight+"px";
+			this.refs[this.state.sparr2[i]].style.height=this.refs[this.state.divarr[i]].offsetHeight+"px";
+		}		
 	}
 
 }
+
 
 
 export default Home;
