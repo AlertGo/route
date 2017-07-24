@@ -1,15 +1,11 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
+  Link
 } from 'react-router-dom'
 /**
   导入css与请求	
 */
 import '../Css/home.css'
-import './fetch'
 /**
   导入css与请求end	
 */
