@@ -8,7 +8,7 @@ const left_box= () => (
 		<div id="copyright"></div>
 		<div id="leftnavs">
 			<div id="leftnavs_top">
-				<img src="images/logo.jpg" title="八马茶业" alt="123"/>
+				<img src="../images/logo.jpg" title="八马茶业" alt="123"/>
 				<ul>
 					<li><Link to="/">首页</Link></li>
 					<li><NavLink to="/inside" activeStyle={{
@@ -40,7 +40,7 @@ const left_box= () => (
 				<p><Link to="/">网上商城</Link></p>
 				<p><Link to="/">18度</Link></p>
 				<dl>
-					<dt><img src="images/erwei.jpg" /></dt>
+					<dt><img src="../images/erwei.jpg" /></dt>
 					<dd>八马官方微信</dd>
 				</dl>
 			</div>
@@ -48,4 +48,5 @@ const left_box= () => (
 	</div>
 
 )
+
 export default left_box

@@ -60,7 +60,7 @@ class Home extends React.Component{
 								return (
 									<li className={"defaultli"} key={i} ref={"myli"+i} onMouseLeave={this.mouseout(i)}>
 										{i==0?(<div className="onhove"  ref={"p"+i} ><p className={"homep"} ref={"fonttitle"+i}>{this.state.navE[i]}</p>
-											<Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v}</Link>
+											<Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+0} onMouseOver={this.mouseover(i)}>{v}</Link>
 											<p className="onhovep" ref={"side"+i}></p>
 										</div>):(<div className="onhove" ref={"p"+i}>
 											<Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v}</Link>
