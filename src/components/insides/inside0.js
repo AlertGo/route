@@ -4,25 +4,25 @@ class inside0 extends React.Component{
 		super()
 		this.state={
 			img:null,
-			txt:[]
+			txt:[],
+			title:null
 		}
 	}
 	render (){
 		return (
-			<div>
-				 <div id="foots">八马简介 Bama Introduction</div>{/*接口*/}
-				 <div>
+			<div id="insidebox">
+				 <div id="foots">{this.state.title}</div>{/*接口*/}
+				 <div id="inside0con">
 				 	<div id="Inside0">
-						<img src={this.state.img} />	
+						<img src={this.state.img} className="Inside0img" />	
 						{this.state.txt.map((v,i)=>{
 							return (
-								<p key={i}>{v}</p>
+								<p key={i} className="Inside0p">{v}</p>
 							)
 						})}
 					</div>
 				 </div>
 			</div>
-
 		)
 	}
 	componentDidMount(){
@@ -33,13 +33,14 @@ class inside0 extends React.Component{
         .then((data)=>data.json())
         .then((data)=>{
         	let img=null,txt=[];
-        	console.log(data)
+ 
         	for(var i in data){
         		txt.push(data[i]['text'])
         	}
  			this.setState({
  				img:data[0]['img'],
- 				txt:txt
+ 				txt:txt,
+ 				title:data[0]['title']
  			})
         })
         .catch((x)=>{
