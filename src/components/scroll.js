@@ -62,4 +62,4 @@ const RemoveEvent=(obj,ev,fn)=>{
 }
 
 
-export  { Sb_down , ScrollGo , AddEvent , RemoveEvent }
+export  { Sb_down , ScrollGo , AddEvent , RemoveEvent , GetLandR}

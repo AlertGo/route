@@ -3,12 +3,16 @@ import {
   Link,
   NavLink
 } from 'react-router-dom'
+import "../../Css/commont.css"
+
 const left_box= () => (
 	<div id="left_box">
 		<div id="copyright"></div>
 		<div id="leftnavs">
 			<div id="leftnavs_top">
-				<img src="../images/logo.jpg" title="八马茶业" alt="123"/>
+				<div>
+					<img src="../images/logo.jpg" title="八马茶业" alt="123" />
+				</div>
 				<ul>
 					<li><Link to="/">首页</Link></li>
 					<li><NavLink to="/inside" activeStyle={{

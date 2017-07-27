@@ -1,0 +1,23 @@
+
+.inside2ula{text-decoration: none;color: #3c2c0d;display: inline-block;height: 25px;border:1px solid orange;font-size: 14px;vertical-align: top;padding: 0px 10px;line-height: 25px;margin-right: 10px;}
+.inside2libg{background-color: rgba(255,255,255,.5);color:red;}
+.inside2{width: 100%;height: auto;margin: 0 auto;overflow: hidden;font-size: 14px;position: absolute;left: 0;top: 0}
+.chaimgs{width: 100%;height: 600px;overflow: hidden;position: relative;}
+.chaimg2{position: absolute;;left: 0;bottom: 0;z-index: 9;}
+.chaimg2 , .chaimg2 img{width: 6900px;height: 50%; }
+.chaimg1{position: absolute;left: 0;top: 30%;z-index: 8;}
+.chaimg1 , .chaimg1 img{width: 3000px;height: 70%;}
+.chaimg2 img , .chaimg1 img{height: 100%;}
+.chaimg0{position: absolute;left: 0;top: 0; z-index: 7; }
+.chaimg0 , .chaimg0 img{width: 1500px;height: 100%;}
+.cha_pright,.cha_pleft{width: 100px;height: 100%;position: absolute;z-index: 999;font-size: 40px;text-align: center;display: flex;justify-content: center;align-items: center;}
+.cha_pright{right: 0;top: 0;}
+.cha_pleft{left: 0;top: 0;}
+.chashow{width: 6900px;height: 30%;position: absolute;left: 0;bottom: 10%;z-index: 999;}
+.chashow div{width: 200px;height: 100%;position: absolute;opacity: .2;transition: 1.2s;}
+.chashow div img{width: 200px;height: 100%;}
+
+
+/*inside2s1*/
+
+.inside2s1{width: 870px;height: auto;border:1px solid black;box-sizing: border-box;margin: 0 auto}

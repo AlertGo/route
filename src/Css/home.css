@@ -1,4 +1,4 @@
-#HomeCon{width: 100%;height: 100%;background-image:url('../Images/BG.jpg');position: relative;overflow: hidden;background-size: 100% 100%;}
+#HomeCon{width: 100%;height: 100%;background-image:url('../images/BG.jpg');position: relative;overflow: hidden;background-size: 100% 100%;}
 #home_logo{width:204px;height: 142px;position: absolute;left: 0;top: 0 ;}
 #home_logo img{width: 204px;height: 142px;display: block}
 #home_nav{width: 900px;height:550px;position: relative;margin: -275px auto;top: 50%}

@@ -14,10 +14,7 @@ import { Sb_down , ScrollGo , AddEvent , RemoveEvent } from './scroll'
 //引入三级分页
 import inside0 from './insides/inside0'
 import inside1 from './insides/inside1'
-
-	const inside2=()=>(
-		<div>2</div>
-	)
+import inside2 from './insides/inside2'
 	const inside3=()=>(
 		<div>3</div>
 	)
@@ -62,7 +59,6 @@ class Inside extends React.Component{
 
     componentDidMount (){
 		this.fetchFns("http://localhost:8006/img/navlists")
-		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0])
     }
     componentWillUpdate (){
     	this.refs.right_btm.onmousewheel=null;
@@ -70,12 +66,13 @@ class Inside extends React.Component{
     }
     componentDidUpdate (){
     	setTimeout(()=>{
-			if(this.refs.right_btm.children[0].children[1].offsetHeight>this.refs.right_btm.children[0].children[1].children[0].offsetHeight){
+			if(this.refs.right_btm.children[0].children[1].offsetHeight>=this.refs.right_btm.children[0].children[1].children[0].offsetHeight){
 				this.refs.ranway.classList.remove("block")
 			}else{
 				this.refs.ranway.classList.add("block")
 			}
     	},50)
+		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0])   	
 		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0]);
 		this.refs.right_btm.onmousewheel=ScrollGo(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0],this.refs.ranway,this.refs.ranway.children[0]);
 		this.refs.right_btm.DOMMouseScroll=ScrollGo(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0],this.refs.ranway,this.refs.ranway.children[0]);

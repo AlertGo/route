@@ -14,11 +14,9 @@ class Home extends React.Component{
 		super()
 		this.state={
 			nav:["走进八马1","会员专区","营销网络","新闻动态","八马产品","招商加盟"],
-			navE:["inside BAMA","inside BAMA","inside BAMA","inside BAMA","inside BAMA","inside BAMA"],
 			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3,4]},{con:[1,2,3,4,5,6]}],
 			links:["inside","vip","Marketing","news","product","join"],
 			colors:["green","blue","#00CACA","red","#5B00AE"],
-			images:[],
 			index:0,
 			listdiv:null,
 			title:null,
@@ -29,6 +27,76 @@ class Home extends React.Component{
 			speed:0
 		}
 	}
+	componentDidMount (){
+		this.fetchFn("http://localhost:8006/img/text")
+		this.fetchFns("http://localhost:8006/img/navlists")
+		const My_lis=[]
+		const divarr=[];
+		const sparr=[];
+		const sparr2=[];
+		const parr=[];
+		//悬浮事件div
+		const onhoved=[];
+		//悬浮事件div
+		const Myobj={};
+		const title=[];
+		const side=[];
+		//平滑导航个数
+		let ThisNum=-1;
+		//平滑导航时间
+		let ThisTime=0;
+		//获取dom 分配name
+		for(let i in this.refs){
+			if(i.substr(0,2)=="sp"){
+				sparr.push(i)
+			}else if(i.substr(0,1)=="d"){
+				divarr.push(i)
+			}else if(i.substr(0,1)=="p"){
+				parr.push(i)
+			}else if(i.substr(0,2)=="ne"){
+				onhoved.push(i)
+			}else if(i.substr(0,2)=="my"){
+				My_lis.push(i)
+			}else if(i.substr(0,2)=="rs"){
+				sparr2.push(i)
+			}else if(i.substr(0,2)=="fo"){
+				title.push(i)
+			}else if(i.substr(0,2)=="si"){
+				side.push(i)
+			}
+		}
+		//设置全局对象
+		Myobj.listdiv=onhoved;
+		Myobj.title=title;
+		Myobj.side=side
+		Myobj.sparr=sparr
+		Myobj.sparr2=sparr2
+		Myobj.divarr=divarr
+
+
+		this.setState(Myobj);
+		console.log(this.state)
+		//对获取的dom样式处理  并排好队形
+		for(let i=0;i<sparr.length;i++){
+			this.refs[parr[i]].style.color=this.state.colors[i];
+			this.refs[parr[i]].children[2].style.backgroundColor=this.state.colors[i];
+			this.refs[sparr[i]].style.borderRight="none";
+			this.refs[sparr[i]].style.borderColor=this.state.colors[i];
+			this.refs[sparr[i]].style.height=this.refs[divarr[i]].offsetHeight+"px";
+			this.refs[sparr2[i]].style.borderLeft="none";
+			this.refs[sparr2[i]].style.borderColor=this.state.colors[i];
+			this.refs[sparr2[i]].style.height=this.refs[divarr[i]].offsetHeight+"px";
+			if(this.refs[sparr[i]].offsetHeight>100){
+				this.refs[sparr[i]].style.height="100px";
+				this.refs[sparr2[i]].style.height="100px";
+			}
+		}
+
+		//事件处理
+		this.TransLateTo(ThisNum,My_lis,ThisTime)
+		this.AutoAnima(parr)
+		// this.DidMontafert(sparr,parr,sparr2,divarr)
+	}	
 	render (){
 		return (
 			<div id="HomeCon" >
@@ -40,9 +108,9 @@ class Home extends React.Component{
 
 				<div id="home_nav">
 					<div id="home_navbg" ref={"imagescon"}>
-						{this.state.images.map((v,i) => {
+						{this.state.nav.map((v,i) => {
 							return (
-								<img src={v} key={i} />
+								<img src={v['img']} key={i} />
 							)
 						})}
 					</div>
@@ -59,12 +127,12 @@ class Home extends React.Component{
 							if(i!=2){
 								return (
 									<li className={"defaultli"} key={i} ref={"myli"+i} onMouseLeave={this.mouseout(i)}>
-										{i==0?(<div className="onhove"  ref={"p"+i} ><p className={"homep"} ref={"fonttitle"+i}>{this.state.navE[i]}</p>
-											<Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+0} onMouseOver={this.mouseover(i)}>{v}</Link>
+										{i==0?(<div className="onhove"  ref={"p"+i} ><p className={"homep"} ref={"fonttitle"+i}>{v["navE"]}</p>
+											<Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+0} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link>
 											<p className="onhovep" ref={"side"+i}></p>
 										</div>):(<div className="onhove" ref={"p"+i}>
-											<Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v}</Link>
-											<p className={"homep"} ref={"fonttitle"+i}>{this.state.navE[i]}</p>
+											<Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link>
+											<p className={"homep"} ref={"fonttitle"+i}>{v["navE"]}</p>
 											<p className="onhovep" ref={"side"+i}></p>
 										</div>)}
 										<div className={"homed lists"+i} ref={"newdiv"+i} onMouseMove={this.Scroll}>
@@ -86,7 +154,7 @@ class Home extends React.Component{
 								)
 							}else if(i==2){
 								return (
-									<li key={i} className="defaultli" ref={"myli"+i} onMouseLeave={this.mouseout(i)}><Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v}</Link></li>
+									<li key={i} className="defaultli" ref={"myli"+i} onMouseLeave={this.mouseout(i)}><Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link></li>
 								)
 							}
 						})}
@@ -177,11 +245,9 @@ class Home extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-           console.log(this)
+           console.log(data)
            this.setState({
-           	nav:eval("("+data[0]["nav"]+")"),
-           	navE:eval("("+data[0]["navE"]+")"),
-      		images:eval("("+data[0]["img"]+")")
+           	  nav:data
            })
         })
         .catch((x)=>{
@@ -221,76 +287,6 @@ class Home extends React.Component{
 			}
 		}    	
     }
-	componentDidMount (){
-		this.fetchFn("http://localhost:8006/img/text")
-		this.fetchFns("http://localhost:8006/img/navlists")
-		const My_lis=[]
-		const divarr=[];
-		const sparr=[];
-		const sparr2=[];
-		const parr=[];
-		//悬浮事件div
-		const onhoved=[];
-		//悬浮事件div
-		const Myobj={};
-		const title=[];
-		const side=[];
-		//平滑导航个数
-		let ThisNum=-1;
-		//平滑导航时间
-		let ThisTime=0;
-		//获取dom 分配name
-		for(let i in this.refs){
-			if(i.substr(0,2)=="sp"){
-				sparr.push(i)
-			}else if(i.substr(0,1)=="d"){
-				divarr.push(i)
-			}else if(i.substr(0,1)=="p"){
-				parr.push(i)
-			}else if(i.substr(0,2)=="ne"){
-				onhoved.push(i)
-			}else if(i.substr(0,2)=="my"){
-				My_lis.push(i)
-			}else if(i.substr(0,2)=="rs"){
-				sparr2.push(i)
-			}else if(i.substr(0,2)=="fo"){
-				title.push(i)
-			}else if(i.substr(0,2)=="si"){
-				side.push(i)
-			}
-		}
-		//设置全局对象
-		Myobj.listdiv=onhoved;
-		Myobj.title=title;
-		Myobj.side=side
-		Myobj.sparr=sparr
-		Myobj.sparr2=sparr2
-		Myobj.divarr=divarr
-
-
-		this.setState(Myobj);
-		console.log(this.state)
-		//对获取的dom样式处理  并排好队形
-		for(let i=0;i<sparr.length;i++){
-			this.refs[parr[i]].style.color=this.state.colors[i];
-			this.refs[parr[i]].children[2].style.backgroundColor=this.state.colors[i];
-			this.refs[sparr[i]].style.borderRight="none";
-			this.refs[sparr[i]].style.borderColor=this.state.colors[i];
-			this.refs[sparr[i]].style.height=this.refs[divarr[i]].offsetHeight+"px";
-			this.refs[sparr2[i]].style.borderLeft="none";
-			this.refs[sparr2[i]].style.borderColor=this.state.colors[i];
-			this.refs[sparr2[i]].style.height=this.refs[divarr[i]].offsetHeight+"px";
-			if(this.refs[sparr[i]].offsetHeight>100){
-				this.refs[sparr[i]].style.height="100px";
-				this.refs[sparr2[i]].style.height="100px";
-			}
-		}
-
-		//事件处理
-		this.TransLateTo(ThisNum,My_lis,ThisTime)
-		this.AutoAnima(parr)
-		// this.DidMontafert(sparr,parr,sparr2,divarr)
-	}
 	componentDidUpdate(){
 		//对获取的dom样式处理  并排好队形
 		for(let i=0;i<this.state.sparr.length;i++){
