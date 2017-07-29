@@ -1,2 +1,16 @@
-.MerryBox{width: 800px;height: auto;margin: 0 auto;overflow: hidden;}
-.imgshow{width: 786px;height: 406px;margin: 0 auto;border:3px solid #c19a68;}
+#MerryBox{width: 800px;height: auto;margin: 0 auto;overflow: hidden;padding-bottom: 100px;}
+.imgshow{width: 786px;height: 406px;margin: 0 auto;border:3px solid #c19a68;position: relative;}
+.imgshow img{width: 786px;height: 406px;overflow: hidden;transition: 1s;opacity: 0;position: absolute;left: 0;top: 0}
+.imgshow img.Opacityimg{opacity: 1;z-index: 998}
+.titleshow{width: 800px;height:50px;text-align: center;font-size: 15px;line-height: 50px;}
+.MerryNav{width: 800px;height: 70px;position: relative;margin: 0 auto}
+.MerryNav_1{width: 730px;height: 70px;margin: 0 auto;overflow: hidden;}
+.MerryNav_1 div{width: 100%;height: 70px;overflow: hidden;position: absolute;opacity: 0;transition: .7s}
+.MerryNav_1 div.Opacity{opacity: 1;z-index: 977}
+.MerryNav_1 div img{width:90px;height: 55px;border:2px solid #c19a68;margin-left: 5px;margin-right: 5px;opacity: .7;transition: .7s;cursor: pointer;}
+.MerryNav_1 div img:hover{opacity: 1;}
+.MerryNav_1 div img.ckcolor{opacity: 1;}
+.MerryNav button{position: absolute;width:30px;height: 59px;top: 0;text-align: center;line-height: 55px;z-index: 999;background-repeat: no-repeat;font-size: 0;background-position: center center;background-color: transparent;border:none;outline: none;opacity: .8;transition: .5s;cursor: pointer;}
+.MerryNav button:hover{opacity: 1}
+#M_btnleft{left: 0;background-image: url('http://localhost:8006/images/before.png');}
+#M_btnright{right: 0;background-image: url('http://localhost:8006/images/after.png');}

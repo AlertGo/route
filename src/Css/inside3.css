@@ -1,0 +1,4 @@
+.inside3_dl{display: inline-block;width: 151px;height: 140px;border:3px solid rgb(218,204,166);overflow: hidden;margin-right: 8px;margin-left: 8px;margin-bottom: 10px;background-color: rgb(218,204,166);}
+.inside3_dl dt,.inside3_dl dt img{width:151px;height: 114px;}
+.inside3_dl dd{line-height: 26px;font-size: 12px;text-align: center;}
+

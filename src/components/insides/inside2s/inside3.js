@@ -5,23 +5,11 @@ import {
   Switch
 } from 'react-router-dom'
 import '../../Css/inside2.css'
-import Inside2s0 from './inside2s/inside2s0'
-import Inside2s1 from './inside2s/inside2s1'
-import Inside2s2 from './inside2s/inside2s2'
-import Inside2s3 from './inside2s/inside2s3'
-import Inside2s4 from './inside2s/inside2s4'
-import Inside2s5 from './inside2s/inside2s5'
-
-
-
-
-class Inside2 extends React.Component{
+class Inside3 extends React.Component{
 	constructor (){
 		super()
 		this.state={
-			components:[Inside2s0,Inside2s1,Inside2s2,Inside2s3,Inside2s4,Inside2s5,Inside2s1,Inside2s1,],
-			title:[],
-			href:"/inside/inside2"
+
 		}
 	}
 	componentDidMount(){
@@ -29,7 +17,7 @@ class Inside2 extends React.Component{
 		console.log(window.location)
 	}
 	render (){
-		return (
+		return (	
 			<div id="insidebox"> 
 				 <div id="foots">				
 					{this.state.title.map((v,i)=>{
@@ -39,15 +27,7 @@ class Inside2 extends React.Component{
 					})}									 
 				</div>{/*接口*/}
 				 <div id="inside0con">
-				 	<div className="inside2">
-				 	<Switch>	
-						<Route exact path={this.state.href} component={Inside2s0} />
-					 	{this.state.title.map((v,i)=>{
-							return (
-								<Route path={this.state.href+"/cha"+i} key={i} component={this.state.components[i]} />
-							)				 	
-						})}	
-					</Switch>			 		
+				 	<div className="inside2">				 		
 				 	</div>
 				 </div>
 			</div>
@@ -68,6 +48,6 @@ class Inside2 extends React.Component{
     }
 }
 
-export default Inside2
+export default Inside3
 
  

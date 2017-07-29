@@ -15,9 +15,8 @@ import { Sb_down , ScrollGo , AddEvent , RemoveEvent } from './scroll'
 import inside0 from './insides/inside0'
 import inside1 from './insides/inside1'
 import inside2 from './insides/inside2'
-	const inside3=()=>(
-		<div>3</div>
-	)
+import inside3 from './insides/inside3'
+
 	const inside4=()=>(
 		<div>11111111</div>
 	)

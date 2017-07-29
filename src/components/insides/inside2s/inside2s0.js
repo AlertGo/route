@@ -29,12 +29,11 @@ class Inside2s0 extends React.Component{
 				this.refs.chaimgs.children[3].style.left=this.state.speed+"px"
 				this.MouseOvers()
 				// console.log(this.refs.chaimgs.children[3].offsetLeft)
-
 				this.sb_enter()
 			},15)
 		}
 		this.refs.cha_pright.onmouseover=() => {
-			clearInterval(Timer)
+			clearInterval(Timer);
 			Timer=setInterval(() => {
 				if(this.state.speed>=0){
 					clearInterval(Timer);
@@ -108,7 +107,6 @@ class Inside2s0 extends React.Component{
 	// 	// 	// 		return 
 	// 	// 	// 	}
 	// 	// 	// 	obj.children[3].style.left=obj.children[3].offsetLeft-4+"px"
-
 	// 	// 	// },100)
 	// 	// 	// obj.children[0].style.left=(-ImgW_one)+"px"
 	// 	// 	// obj.children[3].style.left=(-ImgW_three)+"px"
@@ -147,10 +145,9 @@ class Inside2s0 extends React.Component{
 	// 	// 	})
 	// 	// }
 	// }
-
 	sb_enter (){
 		for(var i=0;i<this.refs.chashow.children.length;i++){
-			if(this.refs.chashow.offsetLeft<-900*i && this.refs.chashow.offsetLeft>-900*(i+1)){
+			if(this.refs.chashow.offsetLeft<-800*i && this.refs.chashow.offsetLeft>-800*(i+1)){
 				this.refs.chashow.children[i].style.opacity="1"
 			}else{
 				this.refs.chashow.children[i].style.opacity="0"					
@@ -170,7 +167,7 @@ class Inside2s0 extends React.Component{
 				<div className="chashow" ref='chashow'>
 					{this.state.show.map((v,i)=>{
 						return (
-							<div key={i} style={{left:900*(i+1)+"px"}}>
+							<div key={i} style={{left:800*(i+1)+"px"}}>
 								<img src={v['img']} />
 
 							</div>
