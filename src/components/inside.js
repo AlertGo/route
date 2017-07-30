@@ -17,15 +17,12 @@ import inside1 from './insides/inside1'
 import inside2 from './insides/inside2'
 import inside3 from './insides/inside3'
 
+import inside5 from './insides/inside5'
+import inside6 from './insides/inside6'
 	const inside4=()=>(
 		<div>11111111</div>
 	)
-	const inside5=()=>(
-		<div>11111111</div>
-	)
-	const inside6=()=>(
-		<div>11111111</div>
-	)
+
 	const inside7=()=>(
 		<div>11111111</div>
 	)
@@ -72,7 +69,7 @@ class Inside extends React.Component{
 			}
     	},50)
 		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0])   	
-		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0]);
+		// this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0]);
 		this.refs.right_btm.onmousewheel=ScrollGo(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0],this.refs.ranway,this.refs.ranway.children[0]);
 		this.refs.right_btm.DOMMouseScroll=ScrollGo(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0],this.refs.ranway,this.refs.ranway.children[0]);
     }

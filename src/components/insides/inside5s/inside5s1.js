@@ -4,7 +4,7 @@ import React from 'react'
 
 //end
 
-export default class Inside2s2 extends React.Component{
+export default class Inside5s1 extends React.Component{
 	constructor (){
 		super();
 		this.state={
@@ -17,7 +17,7 @@ export default class Inside2s2 extends React.Component{
 		this.bool=true;
 	}
 	componentDidMount (){
-		this.fetchFn("http://localhost:8006/img/inside2s2")
+		this.fetchFn("http://localhost:8006/img/inside5s1")
 		console.log(this.refs.ul)
 
 	}
@@ -30,13 +30,9 @@ export default class Inside2s2 extends React.Component{
         .then((data)=>data.json())
         .then((data)=>{
        		console.log(data)
-       		let bo=[],bg=[]
-       		for(var i in data){
-       			data[i]['text']=="bg"?bg.push(data[i]):bo.push(data[i])
-       		}
+ 
        		this.setState({
-       			data:bo,
-       			bg:bg
+       			data:data
        		})
         })
         .catch((x)=>{
@@ -73,16 +69,16 @@ export default class Inside2s2 extends React.Component{
    	}
 	render (){
 		return (
-			<div className="inside2s2">
-				<div className="inside2s2_top">
+			<div className="inside5s1">
+				<div className="inside5s1_top">
 					{/*	轮播元素 */}
 					<div className="inside2s2_l_box" ref="inside2s2_box">
-						<ul className="inside2s2_l_ul" ref="ul">
+						<ul className="inside5s1_l_ul" ref="ul">
 							{this.state.data.map((v,i) => {
 								return (
 									<li key={i}>
 										<img src={v['img']} />
-										<p className="inside2s2_l_ul_p">{v['title']}</p>
+										<p className="inside5s1_l_ul_p">{v['title']}</p>
 										<p>{v['text']}</p>
 									</li>
 								)
@@ -91,13 +87,6 @@ export default class Inside2s2 extends React.Component{
 					</div>
 					<button id="M_btnleft2" onClick={this.RightCk()} ></button>
 					<button id="M_btnright2" onClick={this.LeftCk()}></button>
-				</div>
-				<div className="inside2s2_btm">
-					{this.state.bg.map((v,i) => {
-						return (
-							<img src={v['img']} key={i}/>
-						)
-					})}
 				</div>
 			</div>
 		)

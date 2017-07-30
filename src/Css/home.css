@@ -1,54 +1,253 @@
-#HomeCon{width: 100%;height: 100%;background-image:url('../images/BG.jpg');position: relative;overflow: hidden;background-size: 100% 100%;}
-#home_logo{width:204px;height: 142px;position: absolute;left: 0;top: 0 ;}
-#home_logo img{width: 204px;height: 142px;display: block}
-#home_nav{width: 900px;height:550px;position: relative;margin: -275px auto;top: 50%}
-#home_navbg,#home_bg{width: 330px;height: 325px;position: absolute;left: 50%;top: 50%;margin: -145px 0 0 -170px;border-radius: 50%;}
-#home_navbg{overflow: hidden;background-color:red;}
-#home_bg{width: 500px;height: 500px;margin-left: -250px;margin-top: -250px;}
-#navlists{width: 100%;height: 100%;position: relative;font-size: 18px;font-weight: bold;font-family: cursive;}
-#navlists li{display: inline-block;position: absolute;}
-.defaultli{left: 50%;top: 50%;transition: 1.3s;opacity: 0;transform: scale(0);}
-.defaultli0{left: 70%;top: 0%;opacity: 1;transform: scale(1);}
-.defaultli1{left: 85%;top: 40%;opacity: 1;transform: scale(1);}
-.defaultli2{left: 80%;top: 80%;opacity: 1;transform: scale(1);}
-.defaultli3{left: 5%;top: 75%;opacity: 1;transform: scale(1);}
-.defaultli4{left: 10%;top:40%;opacity: 1;transform: scale(1);}
-.defaultli5{left: 5%;top: 10%;opacity: 1;transform: scale(1);}
-#navlists a{color: rgb(60, 44, 13)}
-.lists0,.lists5{width: 220px;height: 100px;position: relative;font-size: 0;overflow: hidden;top: 10px}
-.lists5 span,.lists0 span{display: inline-block;width: 10px;height: 100%;border:1px solid black;box-sizing: border-box;vertical-align: top;}
-.lists5 div,.lists0 div{width: 200px;height: auto;display: inline-block;font-size: 0;position: relative;left: 0;top: 0;transition: .5s linear}
-.lists5 div p,.lists0 div p{width: 100px;height: 25px;display: inline-block;font-size: 12px;text-align: center;line-height: 25px;}
-.lists1,.lists3,.lists4{width: 120px;height: 100px;position: relative;font-size: 0;overflow: hidden;top: 10px;}
-.lists1 span,.lists3 span,.lists4 span{display: inline-block;width: 10px;height: auto;border:1px solid black;box-sizing: border-box;vertical-align: top;}
-.lists1 div,.lists3 div,.lists4 div{width: 100px;height: auto;display: inline-block;font-size: 0;position: relative;left: 0;top: 0;transition: .5s linear}
-.lists1 div p,.lists3 div p,.lists4 div p{width: 100px;height: 25px;display: inline-block;font-size: 12px;text-align: center;line-height: 25px;}
-.onhove{position: relative;left: 0;top: 0;padding-left: 20px;}
-.onhovep{width: 5px;height:0px;position: absolute;background-color: red;left: 0px;top: 0px;transition: .7s;}
-.homep{font-size: 20px;transition: .7s ;opacity: 0}
-.homed{transition: .7s;transform: scale(0);}
-#home_navbg img{position: absolute;left: -120px;top: -120px;transition: 1.2s;opacity: 0;width: 570px;height:565px;}
-#home_navbg img.hovesty{opacity: 1}
-.onhovepsty{height: 100%;}
-.homepsty{opacity: 1}
-.homedsty{transform: scale(1);}
-.showba{transform: scale(1);}
-.defaultli:hover{animation-play-state: paused;}
-
+#HomeCon {
+	width: 100%;
+	height: 100%;
+	background-image:url('../images/BG.jpg');
+	position: relative;
+	overflow: hidden;
+	background-size: 100% 100%;
+}
+#home_logo {
+	width:204px;
+	height: 142px;
+	position: absolute;
+	left: 0;
+	top: 0 ;
+}
+#home_logo img {
+	width: 204px;
+	height: 142px;
+	display: block
+}
+#home_nav {
+	width: 900px;
+	height:550px;
+	position: relative;
+	margin: -275px auto;
+	top: 50%
+}
+#home_navbg,#home_bg {
+	width: 330px;
+	height: 325px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -145px 0 0 -170px;
+	border-radius: 50%;
+}
+#home_navbg {
+	overflow: hidden;
+	background-color:red;
+}
+#home_bg {
+	width: 500px;
+	height: 500px;
+	margin-left: -250px;
+	margin-top: -250px;
+}
+#navlists {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: cursive;
+}
+#navlists li {
+	display: inline-block;
+	position: absolute;
+}
+.defaultli {
+	left: 50%;
+	top: 50%;
+	transition: 1.3s;
+	opacity: 0;
+	transform: scale(0);
+}
+.defaultli0 {
+	left: 70%;
+	top: 0%;
+	opacity: 1;
+	transform: scale(1);
+}
+.defaultli1 {
+	left: 85%;
+	top: 40%;
+	opacity: 1;
+	transform: scale(1);
+}
+.defaultli2 {
+	left: 80%;
+	top: 80%;
+	opacity: 1;
+	transform: scale(1);
+}
+.defaultli3 {
+	left: 5%;
+	top: 75%;
+	opacity: 1;
+	transform: scale(1);
+}
+.defaultli4 {
+	left: 10%;
+	top:40%;
+	opacity: 1;
+	transform: scale(1);
+}
+.defaultli5 {
+	left: 5%;
+	top: 10%;
+	opacity: 1;
+	transform: scale(1);
+}
+#navlists a {
+	color: rgb(60, 44, 13)
+}
+.lists0,.lists5 {
+	width: 220px;
+	height: 100px;
+	position: relative;
+	font-size: 0;
+	overflow: hidden;
+	top: 10px
+}
+.lists5 span,.lists0 span {
+	display: inline-block;
+	width: 10px;
+	height: 100%;
+	border:1px solid black;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+.lists5 div,.lists0 div {
+	width: 200px;
+	height: auto;
+	display: inline-block;
+	font-size: 0;
+	position: relative;
+	left: 0;
+	top: 0;
+	transition: .5s linear
+}
+.lists5 div p,.lists0 div p {
+	width: 100px;
+	height: 25px;
+	display: inline-block;
+	font-size: 12px;
+	text-align: center;
+	line-height: 25px;
+}
+.lists1,.lists3,.lists4 {
+	width: 120px;
+	height: 100px;
+	position: relative;
+	font-size: 0;
+	overflow: hidden;
+	top: 10px;
+}
+.lists1 span,.lists3 span,.lists4 span {
+	display: inline-block;
+	width: 10px;
+	height: auto;
+	border:1px solid black;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+.lists1 div,.lists3 div,.lists4 div {
+	width: 100px;
+	height: auto;
+	display: inline-block;
+	font-size: 0;
+	position: relative;
+	left: 0;
+	top: 0;
+	transition: .5s linear
+}
+.lists1 div p,.lists3 div p,.lists4 div p {
+	width: 100px;
+	height: 25px;
+	display: inline-block;
+	font-size: 12px;
+	text-align: center;
+	line-height: 25px;
+}
+.onhove {
+	position: relative;
+	left: 0;
+	top: 0;
+	padding-left: 20px;
+}
+.onhovep {
+	width: 5px;
+	height:0px;
+	position: absolute;
+	background-color: red;
+	left: 0px;
+	top: 0px;
+	transition: .7s;
+}
+.homep {
+	font-size: 20px;
+	transition: .7s ;
+	opacity: 0
+}
+.homed {
+	transition: .7s;
+	transform: scale(0);
+}
+#home_navbg img {
+	position: absolute;
+	left: -120px;
+	top: -120px;
+	transition: 1.2s;
+	opacity: 0;
+	width: 570px;
+	height:565px;
+}
+#home_navbg img.hovesty {
+	opacity: 1
+}
+.onhovepsty {
+	height: 100%;
+}
+.homepsty {
+	opacity: 1
+}
+.homedsty {
+	transform: scale(1);
+}
+.showba {
+	transform: scale(1);
+}
+.defaultli:hover {
+	animation-play-state: paused;
+}
 @keyframes autoAnima {
-	0%{transform: translateX(0px) translateY(0px);}
-	30%{transform: translateX(-3px) translateY(-3px);}
-	70%{transform: translateX(5px) translateY(5px);}
-	100% {transform: translateX(-5px) translateY(-5px)}
+	0% {
+	transform: translateX(0px) translateY(0px);
+}
+30% {
+	transform: translateX(-3px) translateY(-3px);
+}
+70% {
+	transform: translateX(5px) translateY(5px);
+}
+100% {
+	transform: translateX(-5px) translateY(-5px)
+}
 }
 @keyframes autoAnima0 {
-	from{transform: translateX(0px) translateY(0px);}
-
-	to{transform: translateX(-120px) translateY(-120px)}
+	from {
+	transform: translateX(0px) translateY(0px);
+}
+to {
+	transform: translateX(-120px) translateY(-120px)
+}
 }
 @keyframes autoAnima1 {
-	from{transform: translateX(0px) translateY(0px);}
-
-	to{transform: translateX(120px) translateY(20px)}
+	from {
+	transform: translateX(0px) translateY(0px);
 }
-
+to {
+	transform: translateX(120px) translateY(20px)
+}
+}
