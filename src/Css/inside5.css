@@ -21,7 +21,7 @@
 }
 .Inside5_nav ul li {
 	display: inline-block;
-	padding:2px 20px;
+	
 	font-size: 14px;
 	border:2px solid #af7a13;
 	margin-left: 20px;
@@ -53,6 +53,8 @@
 }
 .inside5a {
 	color: rgb(60, 44, 13);
+	display: block;
+	padding:2px 20px;
 }
 /*需要加背景*/
 	.inside5s0_left {
@@ -118,7 +120,7 @@
 	height: auto;
 	margin:0 auto;
 	overflow: hidden;
-	margin-top: 30px;
+
 }
 .inside5s1_top {
 	width: 870px;
@@ -170,7 +172,6 @@
 	position: absolute;
 	width:30px;
 	height: 59px;
-	top: 50%;
 	text-align: center;
 	line-height: 55px;
 	z-index: 999;
@@ -183,10 +184,20 @@
 	opacity: .8;
 	transition: .5s;
 	cursor: pointer;
-	margin-top: -50px;
 }
 .inside5s1_top button:hover {
 	opacity: 1
+}
+	
+#M_btnleft2{
+	margin-top: -50px;
+	top: 50%;
+
+}
+#M_btnright2{
+	margin-top: -50px;
+	top: 50%;
+	
 }
 /*5_2*/
 	.inside5s2_box {

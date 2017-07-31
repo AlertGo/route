@@ -5,7 +5,11 @@
 	background-image: url('../images/leftboxbg.jpg');
 	font-size: 0;
 	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+
 }
+
 #left_box {
 	width: 178px;
 	height: 100%;
@@ -128,7 +132,9 @@
 	font-size: 18px;
 }
 #head_right li a {
-	color:#3c2c0d }
+	color:#3c2c0d;
+}
+#head_right li a.cosss{color: red}
 #foots {
 	font-size: 21px;
 	font-family: cursive;
@@ -155,6 +161,7 @@
 	overflow: hidden;
 	height:95%;
 	position: relative;
+
 }
 #Inside0 {
 	width: 870px;
@@ -185,7 +192,7 @@
 	border-radius: 5px;
 	position: absolute;
 	right: 10px;
-	top: 39px;
+	margin-top: 42px;
 	display: none
 }
 #Ball {

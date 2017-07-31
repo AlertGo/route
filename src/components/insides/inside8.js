@@ -7,15 +7,13 @@ import {
 } from 'react-router-dom'
 //滚轮通用方法
 import { Sb_down , ScrollGo , AddEvent } from '../scroll'
-
 import '../../Css/inside5.css'
-import dateils0 from './inside5s/inside5s0'
-import dateils1 from './inside5s/inside5s1'
-import dateils2 from './inside5s/inside5s2'
-const dateils3=()=>(
-	<div>13</div>
-)
-class inside5 extends React.Component{
+import '../../Css/inside8.css'
+import dateils0 from './inside8s/inside8s0'
+import dateils1 from './inside8s/inside8s1'
+import dateils2 from './inside8s/inside8s2'
+import dateils3 from './inside8s/inside8s3'
+class inside8 extends React.Component{
 	constructor ({match}){
 		super()
 		this.state={
@@ -27,10 +25,13 @@ class inside5 extends React.Component{
 		this.hrefs=match.url;
 	}
 	componentDidMount(){
-		this.fetchFn("http://localhost:8006/img/inside5")
+		this.fetchFn("http://localhost:8006/img/inside8")
 	}
 	liCk (x){
 		return ()=>{
+			this.refs.inside0con.children[0].style.top="0px"
+			let ball=this.refs.inside0con.parentNode.parentNode.children[1].children[0]
+			ball.style.top="0px"
 			this.setState({
 				index:x
 			})
@@ -55,7 +56,7 @@ class inside5 extends React.Component{
 				 			{this.state.nav.map((v,i)=>{
 				 				return (
 				 					<li key={i} className={i==this.state.index?"colors":""} onClick={this.liCk(i)}>
-				 						<Link to={this.hrefs+"/dateils"+i} className="inside5a" onClick={this.aboutscroll.bind(this)}>
+				 						<Link to={this.hrefs+"/dateils"+i} className="inside5a">
 											{v['shows']}
 				 						</Link>				 					
 				 					</li>
@@ -65,9 +66,7 @@ class inside5 extends React.Component{
 				 		</div>
 				 		<div className="Inside5_box">
 				 			<Route exact path={this.hrefs} component={dateils0}/>
-
-				 			{this.state.cons.map((v,i)=>{
-				 			
+				 			{this.state.cons.map((v,i)=>{				 			
 				 				return (
 				 					<Route path={this.hrefs+"/dateils"+i} component={v} key={i}/>
 				 				)
@@ -84,7 +83,6 @@ class inside5 extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
- 	
  			this.setState({
  				nav:data
  			})
@@ -98,7 +96,7 @@ class inside5 extends React.Component{
 
 
 
-export default inside5
+export default inside8
 
  
 

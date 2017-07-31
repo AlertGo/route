@@ -1,0 +1,27 @@
+#Inside7{width: 870px;height: auto;margin: 0 auto;overflow: hidden;position: relative;left: 0;top: 0;padding-bottom: 100px;}
+.Inside7img{width: 870px;height: 480px;display: block;}
+.inside7_p{width: 100%;height: 25px;text-align: center;line-height: 25px;margin-bottom: 30px;}
+.i7_Tie,.i7_Tie ul{width: 100%;height: auto;overflow: hidden;}
+.i7_Tie,.i7_Tie ul li{width: 100%;height: 138px;overflow: hidden;}
+.i7_Tie_leftli{width: 110px;height: 138px;display: inline-block;vertical-align: top;overflow: hidden;margin-right: 60px;}
+.i7_Tie_leftli img{width: 95px;height: 138px;margin-left: 10px;}
+.i7_Tie_rightli{width: 700px;height: 104px;display: inline-block;vertical-align: top;overflow: hidden;margin-top: 15px;border-bottom: 1px solid black;box-sizing: border-box;}
+.i7_Tie_lip1{width: 100%;height: 30px;line-height: 30px;font-size: 20px;}
+.i7_Tie_lip2{width: 100%;height: 30px;line-height: 30px;font-size: 16px;}
+.i7_Tie_cons{width: 100%;height: 23px;margin-top: 10px;font-size: 0px;}
+.i7_Tie_cons_l{width: 580px;height: 23px;line-height: 23px;overflow: hidden;display: inline-block;font-size: 13px;vertical-align: top}
+.i7_Tie_cons_r{width: 80px;height: 23px;background-color: #3c2c0d;display: inline-block;vertical-align: top;margin-left: 30px;border-radius: 5px;color: #f7e9c6;font-size: 12px;text-align: center;line-height: 23px;cursor:pointer;}
+.i7_Tie_fixed{width: 100%;height: 100%;position: fixed;left: 0;top: 0;background-color: rgba(0,0,0,.6);display: none;transition: 1s}
+.i7_fixed_con{width: 800px;height: 500px;background-image: url("http://localhost:8006/images/download.jpg");background-position: left bottom;background-repeat: no-repeat;background-color: #f7e9c6;box-shadow: 0 0 10px 5px #333;position:absolute;margin: auto;left: 0;top: 0;right: 0;bottom:0;font-size: 0;text-align: center;padding-top: 30px;box-sizing: border-box;}
+.fixed_left{display: inline-block;width: 143px;height: 214px;padding: 5px;box-shadow: 0 0 5px 2px #999;vertical-align: top;font-size: 12px;}
+.fixed_right{width: 490px;height: auto;display: inline-block;font-size: 13px;vertical-align: top;margin-left: 30px;text-align: left}
+.i7_Tie_lip11{width: 100%;height: 25px;line-height: 25px;font-size: 20px;}
+.i7_Tie_lip22{width: 100%;height: 25px;line-height: 25px;font-size: 16px;}
+.fixed_left img{width: 100%;height: 100%;background-color: white}
+.fixed_right_con p{padding: 10px 0; line-height: 16px;}
+.cha{width: 30px;height: 30px;font-size: 23px;color: white;border: 2px solid white ;border-radius: 50%;text-align: center;line-height: 26px;box-sizing: border-box;background-color: black;transform: rotate(45deg);position: absolute;right: -10px;top: -10px;}
+
+
+
+
+

@@ -16,24 +16,15 @@ import inside0 from './insides/inside0'
 import inside1 from './insides/inside1'
 import inside2 from './insides/inside2'
 import inside3 from './insides/inside3'
-
+import inside4 from './insides/inside4'
 import inside5 from './insides/inside5'
 import inside6 from './insides/inside6'
-	const inside4=()=>(
-		<div>11111111</div>
-	)
+import inside7 from './insides/inside7'
+import inside8 from './insides/inside8'
+import inside9 from './insides/inside9'
 
-	const inside7=()=>(
-		<div>11111111</div>
-	)
-	const inside8=()=>(
-		<div>11111111</div>
-	)
-	const inside9=()=>(
-		<div>11111111</div>
-	)
 class Inside extends React.Component{
-	constructor (){
+	constructor ({match}){
 		super()
 		this.state={
 			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3,4]},{con:[1,2,3,4,5,6]}],
@@ -51,21 +42,29 @@ class Inside extends React.Component{
 			ballstyle:true,
 			comname:[inside0,inside1,inside2,inside3,inside4,inside5,inside6,inside7,inside8,inside9]
 		}
+		this.hrefs=match.path
 	}
 
     componentDidMount (){
 		this.fetchFns("http://localhost:8006/img/navlists")
+
     }
     componentWillUpdate (){
     	this.refs.right_btm.onmousewheel=null;
 		this.refs.right_btm.DOMMouseScroll=null;
+		console.log(23123)
+		console.log(this.hrefs,window.location)
+
+
     }
     componentDidUpdate (){
     	setTimeout(()=>{
 			if(this.refs.right_btm.children[0].children[1].offsetHeight>=this.refs.right_btm.children[0].children[1].children[0].offsetHeight){
 				this.refs.ranway.classList.remove("block")
+
 			}else{
 				this.refs.ranway.classList.add("block")
+				this.refs.ranway.style.top="0px"
 			}
     	},50)
 		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0])   	
@@ -90,7 +89,7 @@ class Inside extends React.Component{
 									<li key={i}><NavLink to="/inside" activeStyle={{
     								fontWeight: 'bold',
     								color: 'red'
-  								}} to={"/inside/inside"+i} onClick={this.cks.bind(this)} >{v}</NavLink></li>
+  								}} to={"/inside/inside"+i} onClick={this.cks.bind(this)} className={(this.hrefs==window.location.pathname && i==0)?"cosss":""} >{v}</NavLink></li>
 								)
 							})}
 						    </ul>
@@ -98,7 +97,7 @@ class Inside extends React.Component{
 					</div>
 					<div id="right_btm" ref="right_btm">
 						<Switch	>
-							<Route exact path={"/:use/inside0"} component={inside0} />
+							<Route exact path={"/inside"} component={inside0} />
 							{this.state.comname.map((v,i)=>{														
 								return (
 									<Route path={"/:use/inside"+i} component={v} key={i} />
@@ -116,6 +115,7 @@ class Inside extends React.Component{
 	cks (ev){
 		ev.persist()
 		ev.target.pathname!=window.location.pathname && (this.refs.ranway.children[0].style.top="0px")
+		
 	}
     fetchFns (url){
     	var datas=null;

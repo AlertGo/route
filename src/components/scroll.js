@@ -4,6 +4,7 @@ const Sb_down=(objp,objc)=>{ //球触发   父级元素,子元素
         let obj=ev.currentTarget;
         let downY=ev.clientY-GetLandR(obj).T;
         document.onmousemove=(e)=>{
+
             e.preventDefault()
             let to=e.clientY-downY-GetLandR(obj.parentNode).T;
             to<0?(to=0):to;
@@ -21,6 +22,7 @@ const Sb_down=(objp,objc)=>{ //球触发   父级元素,子元素
 const ScrollGo=(objp,objc,ballp,ballc)=>{
     let go=0;           
     return (ev) => {
+        
         ev.preventDefault()
         try{
             ev.wheelDelta>0?(go=ballc.offsetTop+5):(go=ballc.offsetTop-5);

@@ -1,0 +1,15 @@
+#Inside9{width: 870px;height: auto;position: relative;left: 0;top: 0;overflow: hidden;margin: 0 auto;font-size: 0;text-align: center;padding-top: 40px;}
+.i9_left{width: 281px;height: 345px;display: inline-block;vertical-align: top;}
+.i9_left img{width: 281px;height: 345px;display: block;}
+.i9_right{width: 400px;height: 400px;display: inline-block;vertical-align: top;font-size: 13px;font-weight: bold;text-align: left;margin-top: 95px;margin-left: 60px;}
+.i9_right p{height: 25px;line-height: 25px;}
+.on_line{width: 69px;height: 25px;line-height: 25px;text-align: center;display: block;background-color:black;border-radius:5px;color: #eee;margin-left: 0;margin-top: 15px;cursor: pointer}
+.on_line_fixed{width: 100%;height: 100%;position: fixed;left: 0;top: 0;background-color: rgba(0,0,0,.6);display: none;transition: 1s}
+.on_line_con{width: 580px;height: 340px;background-position: left bottom;background-repeat: no-repeat;background-color: #f7e9c6;box-shadow: 0 0 10px 5px #333;position:absolute;margin: auto;left: 0;top: 0;right: 0;bottom:0;font-size: 0;text-align: center;padding-top: 30px;box-sizing: border-box;}
+.cha{width: 30px;height: 30px;font-size: 23px;color: white;border: 2px solid white ;border-radius: 50%;text-align: center;line-height: 26px;box-sizing: border-box;background-color: black;transform: rotate(45deg);position: absolute;right: -10px;top: -10px;}
+.on_line_con{text-align: left;font-size: 13px;color:#926817;padding-left: 40px;padding-top: 40px;box-sizing: border-box;}
+.on_line_con p{width:100%;height: 30px;line-height: 30px; }
+.on_line_title{font-size: 16px;}
+.on_line_con input{text-indent: 5px;}
+.on_line_con textarea{width: 500px;height: 120px;resize: none;padding: 10px 10px 10px 10px;box-sizing: border-box;}
+.on_line_con button{width: 69px;height: 25px;line-height: 25px;text-align: center;display: block;background-color:black;border-radius:5px;color: #eee;margin-left: 0;margin-top: 15px;outline: none;cursor:pointer;}

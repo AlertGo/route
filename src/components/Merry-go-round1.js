@@ -1,4 +1,4 @@
-import React from 'react'
+	import React from 'react'
 import '.././Css/Merry.css'
 class MerryGo extends React.Component{
 	constructor(){
@@ -22,6 +22,8 @@ class MerryGo extends React.Component{
 		let pagearr2=[];
 		let autoshow=this.props.autoshow
 		var pagenode=null;
+		this.page=Math.floor(autoshow.length/7)
+		console.log(this.page)
 		for(var i in autoshow){
 			// console.log(autoshow[i])
 			if(i%7==0){
@@ -62,7 +64,7 @@ class MerryGo extends React.Component{
 		)
 	}
 	ckright (){
-		if(this.state.pageindex>=2) return ;
+		if(this.state.pageindex>=this.page) return ;
 		this.setState({
 			pageindex:this.state.pageindex+1
 		})
