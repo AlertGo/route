@@ -3,17 +3,42 @@ import {
   Link
 } from 'react-router-dom'
 /**
-  导入css与请求	
-*/
+  导入css与请求	*/
 import '../Css/home.css'
 /**
-  导入css与请求end	
-*/
+  导入css与请求end	*/
+//小组件 中心banner
+class This_img extends React.Component{
+	render (){
+		return (
+			<div id="home_navbg" ref="imagescon">
+				{this.props.nav.map((v,i) => {
+					return (
+						<img src={v['img']} key={i} />
+					)
+				})}
+			</div>
+		)
+	}
+}
+//小组件 Logo 
+const This_Logo= () => (
+	<div id="home_logo">
+		<img src="../Images/LOGO.png" alt="八马茶业" />
+	</div>	
+)
+//中心顶层背景
+const This_water= () => (
+	<div id="home_bg">
+		<img src="../Images/shui.png" />
+	</div>	
+)
+
 class Home extends React.Component{
 	constructor (){
 		super()
 		this.state={
-			nav:["走进八马1","会员专区","营销网络","新闻动态","八马产品","招商加盟"],
+			nav:["走进八马","会员专区","营销网络","新闻动态","八马产品","招商加盟"],
 			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3,4]},{con:[1,2,3,4,5,6]}],
 			links:["inside","vip","inside/inside4","news","product","join"],
 			colors:["green","blue","#00CACA","red","#5B00AE"],
@@ -27,10 +52,97 @@ class Home extends React.Component{
 			speed:0
 		}
 	}
-	componentDidMount (){
+	componentWillMount(){
 		this.fetchFn("http://localhost:8006/img/text")
 		this.fetchFns("http://localhost:8006/img/navlists")
-		const My_lis=[]
+	}
+
+	render (){
+		let home_node=[];
+		{this.state.nav.map((v,i) => {
+			if(i!=2){
+				home_node.push(
+					<li className={"defaultli"} key={i} ref={"myli"+i} onMouseLeave={this.mouseout(i)}>
+						{i==0?(<div className="onhove"  ref={"p"+i} ><p className={"homep"} ref={"fonttitle"+i}>{v["navE"]}</p>
+							<Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+0} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link>
+							<p className="onhovep" ref={"side"+i}></p>
+						</div>):(<div className="onhove" ref={"p"+i}>
+							<Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link>
+							<p className={"homep"} ref={"fonttitle"+i}>{v["navE"]}</p>
+							<p className="onhovep" ref={"side"+i}></p>
+						</div>)}
+						<div className={"homed lists"+i} ref={"newdiv"+i} onMouseMove={this.Scroll}>
+							<span className={"home_leftbor"+i} ref={"sprefs"+i}>
+								{/* 边框 */}
+							</span>
+							<div ref={"divrefs"+i}>
+								{this.state.navlist[i]["con"].map((v,s) =>{
+									return (
+										<p key={"p"+s}><Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+s}>{v}</Link></p>
+									)
+								})}
+							</div>
+							<span className={"home_leftbor"+i} ref={"rsprefs"+i}>
+								{/* 边框 */}
+							</span>
+						</div>
+					</li>
+				)
+			}else if(i==2){
+				home_node.push(
+					<li key={i} className="defaultli" ref={"myli"+i} onMouseLeave={this.mouseout(i)}><Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link></li>
+				)
+			}
+		})}
+		return (
+			<div id="HomeCon" >
+				<This_Logo />
+				{/* nav */}
+				<div id="home_nav">
+					<This_img nav={this.state.nav} ref="imagescon" />{/*小组件 中心图*/}
+					<This_water />
+					<ul id="navlists">
+						{home_node}					
+					</ul>
+				</div>
+			</div>
+		)	
+	}
+	//导航小动画
+	Scroll(event){
+		let Y=event.clientY;
+		let H=event.currentTarget.offsetHeight;
+		let findH=event.currentTarget.children[1].offsetHeight;
+		let To=H-findH;
+		let timer=null
+		let s=(obj)=>{
+			var t=0;
+			while(obj){
+				t+=obj.offsetTop;
+				obj=obj.offsetParent;
+			}
+			return t
+		}
+		if(To<0){
+			if(Y+25<(H/2+s(event.currentTarget))){
+				event.currentTarget.children[1].style.top=0+"px"
+			}else if(Y-25>(H/2+s(event.currentTarget))){
+				event.currentTarget.children[1].style.top=To+"px"
+			}
+		}
+		return false
+	}
+	//通用方法
+	ShareGetTop(obj){
+		// var t=0;
+		// while(obj){
+		// 	t+=obj.offsetTop;
+		// 	obj=obj.offsetParend;
+		// }
+		// return t
+	}
+	componentDidMount (){
+		const My_lis=[];
 		const divarr=[];
 		const sparr=[];
 		const sparr2=[];
@@ -72,10 +184,8 @@ class Home extends React.Component{
 		Myobj.sparr=sparr
 		Myobj.sparr2=sparr2
 		Myobj.divarr=divarr
-
-
+		//改变状态
 		this.setState(Myobj);
-		console.log(this.state)
 		//对获取的dom样式处理  并排好队形
 		for(let i=0;i<sparr.length;i++){
 			this.refs[parr[i]].style.color=this.state.colors[i];
@@ -97,110 +207,11 @@ class Home extends React.Component{
 		this.AutoAnima(parr)
 		// this.DidMontafert(sparr,parr,sparr2,divarr)
 	}	
-	render (){
-		return (
-			<div id="HomeCon" >
-				{/* logo */}
-				<div id="home_logo">
-					<img src="../Images/LOGO.png" alt="八马茶业" />
-				</div>	
-				{/* nav */}
-
-				<div id="home_nav">
-					<div id="home_navbg" ref={"imagescon"}>
-						{this.state.nav.map((v,i) => {
-							return (
-								<img src={v['img']} key={i} />
-							)
-						})}
-					</div>
-					<div id="home_bg">
-						<img src="../Images/shui.png" />
-					</div>
-					<div id="navimgs_con">
-						<div id="navimgs">
-
-						</div>
-					</div>
-					<ul id="navlists">
-						{this.state.nav.map((v,i) => {
-							if(i!=2){
-								return (
-									<li className={"defaultli"} key={i} ref={"myli"+i} onMouseLeave={this.mouseout(i)}>
-										{i==0?(<div className="onhove"  ref={"p"+i} ><p className={"homep"} ref={"fonttitle"+i}>{v["navE"]}</p>
-											<Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+0} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link>
-											<p className="onhovep" ref={"side"+i}></p>
-										</div>):(<div className="onhove" ref={"p"+i}>
-											<Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link>
-											<p className={"homep"} ref={"fonttitle"+i}>{v["navE"]}</p>
-											<p className="onhovep" ref={"side"+i}></p>
-										</div>)}
-										<div className={"homed lists"+i} ref={"newdiv"+i} onMouseMove={this.Scroll}>
-											<span className={"home_leftbor"+i} ref={"sprefs"+i}>
-												{/* 边框 */}
-											</span>
-											<div ref={"divrefs"+i}>
-												{this.state.navlist[i]["con"].map((v,s) =>{
-													return (
-														<p key={"p"+s}><Link to={"/"+this.state.links[i]+"/"+this.state.links[i]+s}>{v}</Link></p>
-													)
-												})}
-											</div>
-											<span className={"home_leftbor"+i} ref={"rsprefs"+i}>
-												{/* 边框 */}
-											</span>
-										</div>
-									</li>
-								)
-							}else if(i==2){
-								return (
-									<li key={i} className="defaultli" ref={"myli"+i} onMouseLeave={this.mouseout(i)}><Link to={"/"+this.state.links[i]} onMouseOver={this.mouseover(i)}>{v["nav"]}</Link></li>
-								)
-							}
-						})}
-					
-					</ul>
-				</div>
-			</div>
-		)	
-	}
-	Scroll(event){
-		let Y=event.clientY;
-		let H=event.currentTarget.offsetHeight;
-		let findH=event.currentTarget.children[1].offsetHeight;
-		let To=H-findH;
-		let timer=null
-		let s=(obj)=>{
-			var t=0;
-			while(obj){
-				t+=obj.offsetTop;
-				obj=obj.offsetParent;
-			}
-			return t
-		}
-		if(To<0){
-			if(Y+25<(H/2+s(event.currentTarget))){
-				event.currentTarget.children[1].style.top=0+"px"
-			}else if(Y-25>(H/2+s(event.currentTarget))){
-				event.currentTarget.children[1].style.top=To+"px"
-			}
-		}
-		return false
-	}
-	//通用方法
-	ShareGetTop(obj){
-		// var t=0;
-		// while(obj){
-		// 	t+=obj.offsetTop;
-		// 	obj=obj.offsetParend;
-		// }
-		// return t
-	}
 	mouseover(x){
 		return ()=>{
-			this.refs.imagescon.children[x].classList.add("hovesty")
-			this.refs.imagescon.children[x].style.animation="autoAnima"+(x%2)+" 4s linear infinite"
-    		this.refs.imagescon.children[x].style.animationDirection="alternate";
+			this.refs.imagescon.refs.imagescon.children[x].classList.add("hovesty")
+			this.refs.imagescon.refs.imagescon.children[x].style.animation="autoAnima"+(x%2)+" 4s linear infinite"
+    		this.refs.imagescon.refs.imagescon.children[x].style.animationDirection="alternate";
     		this.refs["myli"+x].style.animationPlayState="paused"
     		if(x!=2){
     			x<2?this.refs[this.state.listdiv[x]].classList.add("showba"):this.refs[this.state.listdiv[x-1]].classList.add("showba");
@@ -216,7 +227,7 @@ class Home extends React.Component{
 	}
 	mouseout(x){
 		return ()=>{
-			this.refs.imagescon.children[this.state.index].classList.remove("hovesty");
+			this.refs.imagescon.refs.imagescon.children[this.state.index].classList.remove("hovesty");
 			this.refs["myli"+x].style.animationPlayState="running"
 			if(x!=2){
 				x<2?this.refs[this.state.listdiv[x]].classList.remove("showba"):this.refs[this.state.listdiv[x-1]].classList.remove("showba");
@@ -240,12 +251,12 @@ class Home extends React.Component{
     	let index=0;	
     	//暂无用了
     }
-    //获取数据
+    //抓取
     fetchFn (url){
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-           console.log(data)
+ 
            this.setState({
            	  nav:data
            })
@@ -258,7 +269,6 @@ class Home extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-        	console.log(data)
            for(var i in data){
            		data[i]["con"]=eval("("+data[i]["con"]+")")
            		
@@ -296,8 +306,6 @@ class Home extends React.Component{
 	}
 
 }
-
-
 
 export default Home;
 

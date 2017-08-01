@@ -18,8 +18,7 @@ import Join from './components/join'
 /**
   导入end
 */
-console.log(document.getElementById("root"))
-
+// console.log(document.getElementById("root"))
 
 /**
   创建顶级组建

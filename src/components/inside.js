@@ -45,7 +45,7 @@ class Inside extends React.Component{
 		this.hrefs=match.path
 	}
 
-    componentDidMount (){
+    componentWillMount (){
 		this.fetchFns("http://localhost:8006/img/navlists")
 
     }

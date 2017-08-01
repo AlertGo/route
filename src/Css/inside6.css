@@ -20,7 +20,7 @@
 .i6_ul_p2{width: 100px;}
 .i6_ul_p3{width: 40px;font-weight: bold;}
 .i6_ul_p4{width: 70px;font-weight: bold;}
-.i6_li_main{width:340px;height: auto;padding-bottom: 20px;font-size: 12px}
+.i6_li_main{width:340px;height: auto;padding-bottom: 20px;font-size: 12px;min-height: 300px;}
 .i6_li_main p{padding: 3px 0;}
 #Runway_inside6 {
 	width: 10px;

@@ -12,6 +12,7 @@ const Sb_down=(objp,objc)=>{ //球触发   父级元素,子元素
             obj.style.top=to+"px";
             let percent=obj.offsetTop/(obj.parentNode.offsetHeight-obj.offsetHeight)
             objc.style.top=(objp.offsetHeight-objc.offsetHeight)*percent+"px"
+
         }
         document.onmouseup=function(){
             this.onmousemove=null;
@@ -19,26 +20,34 @@ const Sb_down=(objp,objc)=>{ //球触发   父级元素,子元素
         }   
     }       
 }
-const ScrollGo=(objp,objc,ballp,ballc)=>{
+const ScrollGo=(objp,objc,ballp,ballc,come)=>{
     let go=0;           
+    
     return (ev) => {
         
         ev.preventDefault()
         try{
-            ev.wheelDelta>0?(go=ballc.offsetTop+5):(go=ballc.offsetTop-5);
+            ev.wheelDelta>0?(go=ballc.offsetTop-15):(go=ballc.offsetTop+15);
             go<=0?(go=0):go;
             go>=ballp.offsetHeight-ballc.offsetHeight?(go=ballp.offsetHeight-ballc.offsetHeight):go;
             ballc.style.top=go+"px"
             var percent=ballc.offsetTop/(ballp.offsetHeight-ballc.offsetHeight)
             objc.style.top=(objp.offsetHeight-objc.offsetHeight)*percent+"px"
         }catch(x){
-            ev.detail>0?(go=ballc.offsetTop-5):(go=ballc.offsetTop+5);
+            ev.detail>0?(go=ballc.offsetTop+15):(go=ballc.offsetTop-15);
             go<=0?(go=0):go;
             go>=ballp.offsetHeight-ballc.offsetHeight?(go=ballp.offsetHeight-ballc.offsetHeight):go;
             ballc.style.top=go+"px"
             var percent=ballc.offsetTop/(ballp.offsetHeight-ballc.offsetHeight)
             objc.style.top=(objp.offsetHeight-objc.offsetHeight)*percent+"px"
         }
+       if(come!=undefined){
+            if(ballc.offsetTop>=ballp.offsetHeight-ballc.offsetHeight){
+                come.style.bottom=0+"px"
+            }else{
+                come.style.bottom=-60+"px"
+            }
+       }
     }
 }
 const AddEvent=(obj,ev,fn)=>{

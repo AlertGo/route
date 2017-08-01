@@ -5,7 +5,5 @@ class Merry{
 		this.leftBtn=left;
 		this.rightBtn=right
 	}
-	LeftBtn (){
-		this.
-	}
+
 }
