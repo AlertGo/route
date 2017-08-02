@@ -318,7 +318,7 @@ class This_Merry extends React.Component{
 		})
 		if(this.state.index<=0){
 			this.setState({
-				index:this.state.this_length
+				index:this.state.this_length-1
 			})
 		}
 	}
@@ -326,7 +326,8 @@ class This_Merry extends React.Component{
 		this.setState({
 			index:this.state.index+1
 		})
-		if(this.state.index>=this.state.this_length){
+		console.log(this.state.this_length)
+		if(this.state.index>this.state.this_length-2){
 			this.setState({
 				index:0
 			})

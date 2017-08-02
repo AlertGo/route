@@ -1,27 +1,149 @@
-.inside6{width: 870px;height: 600px;margin: 0 auto;overflow: hidden;position: relative;left: 0;top: 0;margin: 0 auto;padding-top: 10px;box-sizing: border-box;font-size: 0px;}
-.inside6_left{width: 456px;height: auto;overflow: hidden;display: inline-block;;vertical-align: top;font-size: 12px;}
-.Resources_box p{padding-top: 5px;padding-bottom: 5px;line-height: 16px;}
-.Resources_title{font-size: 12px;height: 45px;line-height: 8px;}
-.Resources_title p{font-size: 18px;padding: 0;font-weight: bold;}
-.Resources_title img{display:block;border:none;width: 100%;height: 116px;}
-.human_lc img{display:block;border:none;width: 100%;height: 116px;}
-.inside6_left{width:414px;height: auto;overflow: hidden;padding-left: 30px;box-sizing: border-box;display: inline-block;font-size: 12px;}
-.inside6_left_title{width: 100%;height: 30px;border-bottom:1px solid #3c2c0d;font-size: 0px;margin-bottom: 10px;}
-.inside6_left_title p{display: inline-block;height: 30px;font-size: 14px;line-height: 30px;vertical-align: top;}
-.i6_left_title_pl{width: 70%;}
-.i6_left_title_pr{width: 30%;border-radius: 10px;}
-.i6_left_title_pr a{background-color: #3c2c0d;display: inline-block;width: 100%;height: 20px;margin-top: 5px;line-height: 20px;}
-.inside6_left_con{width: 100%;height: 400px;overflow: hidden;position: relative;left: 0;top: 0;}
-.i6_ul{width: 100%;height: auto;padding-bottom: 50px;position: absolute;left: 0;top: 0;transition: .5s}
-.i6_ul li{width: 100%;height:20px;overflow: hidden;font-size: 0px;line-height: 20px;cursor:pointer;transition:.5s;}
-.i6_ul li.toggles{height: auto;}
-.i6_ul li p{display: inline-block;vertical-align: top;font-size: 13px;}
-.i6_ul_p1{width: 170px;font-weight: bold;color: red}
-.i6_ul_p2{width: 100px;}
-.i6_ul_p3{width: 40px;font-weight: bold;}
-.i6_ul_p4{width: 70px;font-weight: bold;}
-.i6_li_main{width:340px;height: auto;padding-bottom: 20px;font-size: 12px;min-height: 300px;}
-.i6_li_main p{padding: 3px 0;}
+.inside6 {
+	width: 870px;
+	height: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	left: 0;
+	top: 0;
+	margin: 0 auto;
+	padding-top: 10px;
+	box-sizing: border-box;
+	font-size: 0px;
+}
+.inside6_left {
+	width: 456px;
+	height: auto;
+	overflow: hidden;
+	display: inline-block;
+	;vertical-align: top;
+	font-size: 12px;
+}
+.Resources_box p {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	line-height: 16px;
+}
+.Resources_title {
+	font-size: 12px;
+	height: 45px;
+	line-height: 8px;
+}
+.Resources_title p {
+	font-size: 18px;
+	padding: 0;
+	font-weight: bold;
+}
+.Resources_title img {
+	display:block;
+	border:none;
+	width: 100%;
+	height: 116px;
+}
+.human_lc img {
+	display:block;
+	border:none;
+	width: 100%;
+	height: 116px;
+}
+.inside6_left {
+	width:414px;
+	height: auto;
+	overflow: hidden;
+	padding-left: 30px;
+	box-sizing: border-box;
+	display: inline-block;
+	font-size: 12px;
+}
+.inside6_left_title {
+	width: 100%;
+	height: 30px;
+	border-bottom:1px solid #3c2c0d;
+	font-size: 0px;
+	margin-bottom: 10px;
+}
+.inside6_left_title p {
+	display: inline-block;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	vertical-align: top;
+}
+.i6_left_title_pl {
+	width: 70%;
+}
+.i6_left_title_pr {
+	width: 30%;
+	border-radius: 10px;
+}
+.i6_left_title_pr a {
+	background-color: #3c2c0d;
+	display: inline-block;
+	width: 100%;
+	height: 20px;
+	margin-top: 5px;
+	line-height: 20px;
+}
+.inside6_left_con {
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+	left: 0;
+	top: 0;
+}
+.i6_ul {
+	width: 100%;
+	height: auto;
+	padding-bottom: 50px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: .5s
+}
+.i6_ul li {
+	width: 100%;
+	height:20px;
+	overflow: hidden;
+	font-size: 0px;
+	line-height: 20px;
+	cursor:pointer;
+	transition:.5s;
+}
+.i6_ul li.toggles {
+	height: auto;
+}
+.i6_ul li p {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 13px;
+}
+.i6_ul_p1 {
+	width: 170px;
+	font-weight: bold;
+	color: red
+}
+.i6_ul_p2 {
+	width: 100px;
+}
+.i6_ul_p3 {
+	width: 40px;
+	font-weight: bold;
+}
+.i6_ul_p4 {
+	width: 70px;
+	font-weight: bold;
+}
+.i6_li_main {
+	width:340px;
+	height: auto;
+	padding-bottom: 20px;
+	font-size: 12px;
+	min-height: 300px;
+}
+.i6_li_main p {
+	padding: 3px 0;
+}
 #Runway_inside6 {
 	width: 10px;
 	height: 60%;
@@ -31,7 +153,7 @@
 	right: 40px;
 	top: 55px;
 	z-index: 999;
-opacity: 0;
+	opacity: 0;
 	transition: .5s;
 }
 #Ball_inside6 {
@@ -42,5 +164,4 @@ opacity: 0;
 	left: 2px;
 	top: 0;
 	border-radius: 5px;
-
 }
