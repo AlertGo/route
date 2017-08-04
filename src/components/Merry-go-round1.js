@@ -23,7 +23,6 @@ class MerryGo extends React.Component{
 		let autoshow=this.props.autoshow
 		var pagenode=null;
 		this.page=Math.floor(autoshow.length/7)
-		console.log(this.page)
 		for(var i in autoshow){
 			// console.log(autoshow[i])
 			if(i%7==0){

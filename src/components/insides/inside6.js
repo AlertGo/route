@@ -43,7 +43,6 @@ class inside6 extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
- 			console.log(data)
  			this.setState({
  				data:data[0]['cons']
  			})
@@ -68,14 +67,11 @@ class This_right extends React.Component{
 	componentWillMount (){
 		this.fetchFn("http://localhost:8006/img/inside6s")
 	}
-	componentDidUpdate (){
-	
-	}
+
 	fetchFn (url){
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
- 			console.log(data)
  			this.setState({
  				data:data
   			})
@@ -86,6 +82,8 @@ class This_right extends React.Component{
     }
     sollger (obj,num,speed,timers){
         clearInterval(timers);
+        this.refs.inside6_left.onmousewheel=null;
+		this.refs.inside6_left.DOMMouseScroll=null;
         timers=setInterval(function () {
             speed=(num-obj.offsetTop)/20;
             if(speed<0){
@@ -93,13 +91,16 @@ class This_right extends React.Component{
             }else{
                 speed=Math.ceil(speed)
             }
-            console.log(obj.offsetTop,num)
             if(obj.offsetTop==num){
                 clearInterval(timers);
+                setTimeout(()=>{
+                	this.refs.inside6_left.onmousewheel=ScrollGo(this.refs.inside6_left_con,this.refs.inside6_left_con.children[0],this.refs.Ball_inside6.parentNode,this.refs.Ball_inside6);
+					this.refs.inside6_left.DOMMouseScroll=ScrollGo(this.refs.inside6_left_con,this.refs.inside6_left_con.children[0],this.refs.Ball_inside6.parentNode,this.refs.Ball_inside6);	    		
+                },300)
                 return
             }
             obj.style.top=obj.offsetTop+speed+"px"
-        },10)
+        }.bind(this),10)
     }
     li_toggle (x){
     	return (ev) => {
@@ -108,7 +109,7 @@ class This_right extends React.Component{
 	    	let childrenH=currli.children[1].offsetHeight+20;
 	  		let currbox=currli.parentNode.parentNode;
 	  		let currul=currli.parentNode;	
-    		currul.style.top=-x*20+"px"
+    		currul.style.top=-x*20+"px";
     		let timers=null
 
     		if(this.index==-1){		    		
@@ -129,17 +130,16 @@ class This_right extends React.Component{
 				}
     		}
     		this.timer=setTimeout(()=>{
-    			console.log(currul.offsetTop)
 				if(currul.offsetHeight>currbox.offsetHeight){
-    				console.log(currbox.offsetHeight,currul.offsetHeight)
     				var aaa=currul.offsetTop/(currbox.offsetHeight-currul.offsetHeight);				
 	    			this.refs.Ball_inside6.parentNode.style.opacity="1";
 	    			let to=Math.floor((this.refs.Ball_inside6.parentNode.offsetHeight-this.refs.Ball_inside6.offsetHeight)*aaa)
-	    			this.sollger(this.refs.Ball_inside6,to,this.speed,timers)
 		  			// this.refs.Ball_inside6.style.top=(this.refs.Ball_inside6.parentNode.offsetHeight-this.refs.Ball_inside6.offsetHeight)*aaa+"px";
 		  			this.refs.Ball_inside6.onmousedown=Sb_down(this.refs.inside6_left_con,this.refs.inside6_left_con.children[0]);
-					this.refs.inside6_left.onmousewheel=ScrollGo(this.refs.inside6_left_con,this.refs.inside6_left_con.children[0],this.refs.Ball_inside6.parentNode,this.refs.Ball_inside6);
+					this.refs.inside6_left.onmousewheel=ScrollGo(this.refs.inside6_left_con,this.refs.inside6_left_con.children[0],this.refs.Ball_inside6.parentNode,this.refs.Ball_inside6);	
 					this.refs.inside6_left.DOMMouseScroll=ScrollGo(this.refs.inside6_left_con,this.refs.inside6_left_con.children[0],this.refs.Ball_inside6.parentNode,this.refs.Ball_inside6);	    		
+	    			this.sollger(this.refs.Ball_inside6,to,this.speed,timers)
+		   			
 		   		}else{			   			
 		    		this.refs.Ball_inside6.parentNode.style.opacity="0";
 		    		this.refs.Ball_inside6.onmousedown=null;

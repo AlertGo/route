@@ -27,7 +27,7 @@ export default class Inside2s4 extends React.Component{
 			<div className="inside2s3">
 				{this.state.data.map((v,i) => {
 					return (
-						<img src={v['img']} />
+						<img src={v['img']} alt="2" key={i}/>
 					)
 				})}
 			</div>

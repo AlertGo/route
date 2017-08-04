@@ -79,7 +79,6 @@ class Inside2s0 extends React.Component{
  			for(var i in data){
  				i<3?bg.push(data[i]):show.push(data[i])
  			}
- 			console.log(bg)
  			this.setState({
  				img:bg,
  				show:show

@@ -15,7 +15,6 @@ export default class dateils0 extends React.Component{
 	}
 	componentDidUpdate (){
 		this.refs.Ball_inside5s0.onmousedown=Sb_down(this.refs.inside5s0_right,this.refs.inside5s0_right.children[0])   	
-		// this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0]);
 		this.refs.inside5s0_box.onmousewheel=ScrollGo(this.refs.inside5s0_right,this.refs.inside5s0_right.children[0],this.refs.Ball_inside5s0.parentNode,this.refs.Ball_inside5s0)
 		this.refs.inside5s0_box.DOMMouseScroll=ScrollGo(this.refs.inside5s0_right,this.refs.inside5s0_right.children[0],this.refs.Ball_inside5s0.parentNode,this.refs.Ball_inside5s0)
 
@@ -25,7 +24,6 @@ export default class dateils0 extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
- 			console.log(data)
  			this.setState({
  				img:data[0]['img'],
  				txt:data[0]['con']

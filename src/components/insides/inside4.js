@@ -21,7 +21,7 @@ class inside4 extends React.Component{
 				 <div id="foots">营销网络 Qualification and bonor</div>{/*接口*/}
 				 <div id="inside0con">
 				 	<div id="Inside4">
-				 		<iframe src="http://localhost:8006/map/index.html" width frameborder="0" scrolling="no" width="810" height="550" style={{border:"none"}}></iframe>
+				 		<iframe src="http://localhost:8006/map/index.html" width frameborder="0" scrolling="no" width="810" height="550" style={{"border":"none"}}></iframe>
 					</div>
 					
 				 </div>

@@ -18,18 +18,12 @@ class Inside extends React.Component{
 	constructor ({match}){
 		super()
 		this.state={
-		
 		}
 	}
-
     componentDidMount (){
 		this.fetchFns("http://localhost:8006/img/navlists")
-
+		console.log(this.props.location)
     }	
-    componentWillUpdate (){
-    }
-    componentDidUpdate (){
-    }
 	render (){
 		return (
 			<div id="Montbox">
@@ -42,7 +36,7 @@ class Inside extends React.Component{
 						</div>
 					</div>
 					<Route exact path="/news" component={This_Merry}/>
-					<Route exact path="/news" component={This_NewsPage}/>
+					<Route exact path="/news" component={This_NewsPage} index="1"/>
 					<Route path="/news/:id" component={This_details} />
 
 				</div>
@@ -53,7 +47,8 @@ class Inside extends React.Component{
     	var datas=null;
         fetch(url)
         .then((data)=>data.json())
-        .then((data)=>{      
+        .then((data)=>{
+
         })
         .catch((x)=>{
             console.log(x)
@@ -70,11 +65,23 @@ class This_NewsPage extends React.Component{
 		}
 	}
 	componentDidMount (){
-		this.fetchFns("http://localhost:8006/img/news")
+		this.fetchFns("http://localhost:8006/img/news")	
+		this.props.location.query!=undefined && (
+			this.state.index=this.props.location.query.index
+		)
+	}
+	shouldComponentUpdate (){
+		return true
 	}
 	componentDidUpdate (){
 		this.refs.listcon.style.width=this.refs.listcon.children.length*35+"px";
-		console.log(this.refs.listcon.children.length)
+		if(this.state.index>2){
+			if(this.state.index>this.state.page-3){
+				this.refs.listcon.style.left=-(this.state.page-4)*35+"px"
+			}else{
+				this.refs.listcon.style.left=-(this.state.index-2)*35+"px"
+			}
+		}
 		if(this.refs.listcon.children.length<=5){
 			this.refs.listcon.parentNode.style.width=this.refs.listcon.children.length*35+"px";
 		}
@@ -94,13 +101,10 @@ class This_NewsPage extends React.Component{
         		pageindex=Math.floor(data.length/16)
         	}
         	let listarr=[]
-        	for(let j=0,i=data.length-1-index;j<16;j++,i--){  	
-			
+        	for(let j=0,i=data.length-1-index;j<16;j++,i--){  				
         		data[i]!=undefined && listarr.push(data[i])	
-        	
-
         	}
-        	console.log(listarr)
+
         	this.setState({
         		data:listarr,
         		page:pageindex
@@ -117,7 +121,6 @@ class This_NewsPage extends React.Component{
     			index:x
     		})
 			this.fetchFns("http://localhost:8006/img/news")
-			console.log(this.refs.listcon.children.length)
 			if(this.refs.listcon.children.length>5){
 				if(x>2){
 					if(x>this.state.page-2){
@@ -165,7 +168,6 @@ class This_NewsPage extends React.Component{
 
 	    		}else{
 	    			this.refs.listcon.style.left=-(this.state.index-1)*35+"px"
-
 	    		}
 	    	}    		
     	}
@@ -176,7 +178,7 @@ class This_NewsPage extends React.Component{
     			<ul id="ul">
     				{this.state.data.map((v,i)=>{
 						return (
-							<Link to={"/news/id="+v['id']}>
+							<Link to={{pathname:"/news/id="+v['id'],query:{index:this.state.index}}} key={i}>
 							<li key={i}>
 								<span className="news_spanleft">{v["date"]}</span>
 								<span className="news_spanright">{v["title"]}</span>
@@ -192,8 +194,8 @@ class This_NewsPage extends React.Component{
 							{(function(that){
 	    						let listarr=[]
 	    						for(let i=0;i<=that.state.page;i++){
-	    							console.log(1)
-	    							listarr.push(<span key={i} onClick={that.listck(i)} className={(i)==that.state.index?"spanactive":""}>{i+1}</span>)
+	    							listarr.push(
+	    								<span key={i} onClick={that.listck(i)} className={(i)==that.state.index?"spanactive":""}>{i+1}</span>)
 	    						}
 	    						return listarr
 	    					})(this)}
@@ -217,18 +219,34 @@ class This_details extends React.Component{
 		this.speed=0;
 		this.timer2=null;
 		this.speed2=0;
+		this.querys=null;
 
 	}
 	componentDidMount (){
 		this.fetchFns("http://localhost:8006/img/newsdetail")
+		console.log(this.props.location)
+		if(this.props.location.query!=undefined){
+			this.querys=this.props.location.query.index;
+		}else{
+			this.querys=0;
+
+		}
 	}
 	componentDidUpdate (){
-		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.newsDetail,this.refs.newsDetail.children[0])   	
-		this.refs.newsDetail.onmousewheel=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
-		this.refs.newsDetail.DOMMouseScroll=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
-	}
-	Go_home (){
+		if(this.refs.newsDetail.offsetHeight>this.refs.newsDetail0.offsetHeight){
+			this.refs.ranway.style.display="none"
+			this.refs.control_news.style.bottom="0"
+		}else{
+			this.refs.ranway.style.display="block"
+			this.refs.control_news.style.bottom="-60px"
 
+
+			this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.newsDetail,this.refs.newsDetail.children[0])   	
+			this.refs.newsDetail.onmousewheel=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
+			this.refs.newsDetail.DOMMouseScroll=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
+
+		}
+		
 	}
 	Gp_Tops (){
 		
@@ -237,12 +255,14 @@ class This_details extends React.Component{
 
 	}
 	render (){
+		console.log(this.state.mains)
 		return (
 			<div className="newsDetail" ref="newsDetail">
-				<div className="newspositon" dangerouslySetInnerHTML={{__html:this.state.mains}} />
+				<div className="newspositon" ref="newsDetail0" dangerouslySetInnerHTML={{__html:this.state.mains}} />
+
 				<div className="control_news" ref="control_news">
 					<button onClick={this.Gp_Tops.bind(this)}>返回顶部</button>
-					<button onClick={this.Go_home.bind(this)}>返回首页</button>
+					<button><Link to={{pathname:"/news",query:{index:this.querys}}}>返回首页</Link></button>
 				</div>
 
 				<div id="Runways" ref="ranway">
@@ -264,9 +284,10 @@ class This_details extends React.Component{
             }
             if(obj.offsetTop==num){
                 clearInterval(timers);
-                this.refs.newsDetail.onmousewheel=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
-				this.refs.newsDetail.DOMMouseScroll=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
-
+                setTimeout(()=>{
+                	this.refs.newsDetail.onmousewheel=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
+					this.refs.newsDetail.DOMMouseScroll=ScrollGo(this.refs.newsDetail,this.refs.newsDetail.children[0],this.refs.ranway,this.refs.ranway.children[0],this.refs.control_news);
+                },600)
                 return
             }
             obj.style.top=obj.offsetTop+speed+"px"
@@ -274,8 +295,6 @@ class This_details extends React.Component{
     }
 	fetchFns (url){
 		let urls=this.hrefs.id
-		
-		console.log(this)
         fetch(url,{
         	method:"POST",
         	headers:{
@@ -353,7 +372,6 @@ class This_Merry extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-        	console.log(data)  
    			this.setState({
    				data:data
    			})

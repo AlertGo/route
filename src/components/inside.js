@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Route,
   NavLink,
-  Link,
   Switch
 } from 'react-router-dom'
 // 左侧通用组件
@@ -47,15 +46,10 @@ class Inside extends React.Component{
 
     componentWillMount (){
 		this.fetchFns("http://localhost:8006/img/navlists")
-
     }
     componentWillUpdate (){
     	this.refs.right_btm.onmousewheel=null;
 		this.refs.right_btm.DOMMouseScroll=null;
-		console.log(23123)
-		console.log(this.hrefs,window.location)
-
-
     }
     componentDidUpdate (){
     	setTimeout(()=>{
@@ -68,7 +62,6 @@ class Inside extends React.Component{
 			}
     	},50)
 		this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0])   	
-		// this.refs.ranway.children[0].onmousedown=Sb_down(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0]);
 		this.refs.right_btm.onmousewheel=ScrollGo(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0],this.refs.ranway,this.refs.ranway.children[0]);
 		this.refs.right_btm.DOMMouseScroll=ScrollGo(this.refs.right_btm,this.refs.right_btm.children[0].children[1].children[0],this.refs.ranway,this.refs.ranway.children[0]);
     }

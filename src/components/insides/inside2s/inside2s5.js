@@ -47,7 +47,6 @@ class This_default extends React.Component{
 		this.fetchFn("http://localhost:8006/img/inside2s5")
 	}
 	componentDidUpdate (){
-		console.log(window.location.pathname)
 		if(window.location.pathname==this.hrefs){
 			this.refs.inside2s5_box.style.display="block"
 		}
@@ -69,14 +68,12 @@ class This_default extends React.Component{
 			this.setState({
 				index:this.state.index+1
 			})
-			console.log(this.state.index)
 	}
 	rightck (){
 			if(this.state.index<=0) return; 
 			this.setState({
 				index:this.state.index-1
 			})
-			console.log(this.state.index)
 	}
 	listck (x){
 		return ()=>{
@@ -92,7 +89,6 @@ class This_default extends React.Component{
 		let nodetop=[]
 		let nodechild=[]
 		this.page=Math.floor(this.state.data.length/10)
-		console.log(this.page)
 		this.state.data.map((v,i)=>{
 			if(i%10==0){
 				nodechild=[];
@@ -121,7 +117,7 @@ class This_default extends React.Component{
 						{(function (that){
 							let listarr=[]
 							for(var i=0;i<=that.page;i++){
-								listarr.push(<span className={that.state.index==i?"color":""} onClick={that.listck(i)}>{i+1}</span>)
+								listarr.push(<span className={that.state.index==i?"color":""} onClick={that.listck(i)} key={i}>{i+1}</span>)
 							}
 							return listarr
 

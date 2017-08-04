@@ -18,8 +18,6 @@ export default class Inside2s2 extends React.Component{
 	}
 	componentDidMount (){
 		this.fetchFn("http://localhost:8006/img/inside2s2")
-		console.log(this.refs.ul)
-
 	}
 	componentDidUpdate (){
 		this.refs.ul.style.width=this.refs.ul.children.length*260+"px"
@@ -29,7 +27,6 @@ export default class Inside2s2 extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-       		console.log(data)
        		let bo=[],bg=[]
        		for(var i in data){
        			data[i]['text']=="bg"?bg.push(data[i]):bo.push(data[i])

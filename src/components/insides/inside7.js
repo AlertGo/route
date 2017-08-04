@@ -43,7 +43,6 @@ class This_i7_details extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-        	console.log(data)
         	this.setState({
         		data:data
         	})

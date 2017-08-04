@@ -24,9 +24,6 @@ export default class dateils2 extends React.Component{
 	componentDidMount (){
 		this.fetchFn("http://localhost:8006/img/inside5s0")
 	}
-    componentWillUpdate (){
-
-    }
     ToUpData (x){
         this.Nums=x;
     }
@@ -87,12 +84,9 @@ class This_default extends React.Component{
     }
     componentDidMount (){
         this.fetchFn("http://localhost:8006/img/inside5s2")
-
     }
     componentWillUpdate (){
-        console.log(this.state.data)
         this.props.ToUpDatas(this.state.data.length)
-
     }
 
     fetchFn (url){

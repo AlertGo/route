@@ -19,15 +19,10 @@ export default class Inside8s1 extends React.Component{
     componentDidMount (){
         this.fetchFn("http://localhost:8006/img/inside8s1")
     }
-    componentDidUpdate (){
-        // this.refs.ul.style.width=this.refs.ul.children.length*260+"px"
-    }
     fetchFn (url){
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-            console.log(data)
- 
             this.setState({
                 data:data
             })

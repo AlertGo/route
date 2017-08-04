@@ -14,7 +14,7 @@ class This_img extends React.Component{
 			<div id="home_navbg" ref="imagescon">
 				{this.props.nav.map((v,i) => {
 					return (
-						<img src={v['img']} key={i} />
+						<img src={v['img']} key={i} alt="111" />
 					)
 				})}
 			</div>
@@ -30,7 +30,7 @@ const This_Logo= () => (
 //中心顶层背景
 const This_water= () => (
 	<div id="home_bg">
-		<img src="../Images/shui.png" />
+		<img src="../Images/shui.png" alt="123"/>
 	</div>	
 )
 
