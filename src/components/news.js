@@ -224,7 +224,6 @@ class This_details extends React.Component{
 	}
 	componentDidMount (){
 		this.fetchFns("http://localhost:8006/img/newsdetail")
-		console.log(this.props.location)
 		if(this.props.location.query!=undefined){
 			this.querys=this.props.location.query.index;
 		}else{
@@ -235,9 +234,13 @@ class This_details extends React.Component{
 	componentDidUpdate (){
 		if(this.refs.newsDetail.offsetHeight>this.refs.newsDetail0.offsetHeight){
 			this.refs.ranway.style.display="none"
+			this.refs.control_news.children[0].style.display="none"
+
 			this.refs.control_news.style.bottom="0"
 		}else{
 			this.refs.ranway.style.display="block"
+			this.refs.control_news.children[0].style.display="inline-block"
+
 			this.refs.control_news.style.bottom="-60px"
 
 
@@ -337,7 +340,7 @@ class This_Merry extends React.Component{
 		})
 		if(this.state.index<=0){
 			this.setState({
-				index:this.state.this_length-1
+				index:this.state.this_length
 			})
 		}
 	}
@@ -346,7 +349,7 @@ class This_Merry extends React.Component{
 			index:this.state.index+1
 		})
 		console.log(this.state.this_length)
-		if(this.state.index>this.state.this_length-2){
+		if(this.state.index>this.state.this_length-1){
 			this.setState({
 				index:0
 			})

@@ -1,0 +1,18 @@
+.right_box_header_vip{height: 80px;}
+.right_cons{width: 870px;height: auto;margin: 0 auto;}
+.Login{width: 380px;height: auto;margin: 0 auto;}
+.Login div{width: 380px;height: 240px;background-image: url('http://localhost:8006/images/loginbg.jpg');background-repeat: no-repeat;padding-top: 80px;padding-left: 15px;box-sizing: border-box;}
+.Login div input{display: inline-block;vertical-align: top;margin-bottom: 10px;border-radius: 5px;}
+.Login div label{display: inline-block;vertical-align: top;width: 60px;text-align: right;margin-bottom: 10px;font-size: 14px;padding-right: 10px;box-sizing: border-box;}
+.Login div button{width: 50px;height: 22px;border-radius: 5px;background-color: #333;color: #aaa;margin-left: 60px;}
+.register div button.login_button,.Login div button.login_button{margin-left: 10px;}
+.register{width: 580px;height: auto;margin:0 auto;}
+.register div{width: 580px;height: 450px;background-image: url('http://localhost:8006/images/regb.jpg');background-repeat: no-repeat;padding-top:20px ;padding-left: 50px;box-sizing: border-box;background-size: 100% 550px;font-size: 12px;}
+.register div input{display: inline-block;vertical-align: top;margin-bottom: 15px;border-radius: 5px;}
+.register div label{display: inline-block;vertical-align: top;width: 90px;text-align: right;margin-bottom: 10px;font-size: 14px;padding-right: 10px;box-sizing: border-box;}
+.register div button{width: 50px;height: 22px;border-radius: 5px;background-color: #333;color: #aaa;margin-left: 80px;}
+.Login div button a,.register div button a{color: #aaa;text-decoration: none}
+.register div p{line-height: 30px;padding-bottom: 20px;}
+#head_right a.Activecolor{color: red;}
+.vip0{width: 100%;height: auto;}
+
