@@ -19,14 +19,8 @@ import vip1 from './vips/vip1'
 import vip2 from './vips/vip2'
 import vip3 from './vips/vip3'
 
-
-
-
 //head导航小组件
 class Head_right extends React.Component{
-	constructor (){
-		super()
-	}
 	viploginck (){
 		alert("登录后查看")
 	}
@@ -47,7 +41,7 @@ class Head_right extends React.Component{
 	  								>
 	  									{v['title']}
 	  								</NavLink>
-	  							</li>							
+	  							</li>
 				    		)
 			    		}else{
 			    			return (
@@ -55,7 +49,7 @@ class Head_right extends React.Component{
 				    				<Link to={this.props.hrefs} onClick={this.viploginck}>
 	  									{v['title']}
 	  								</Link>
-	  							</li>							
+	  							</li>
 				    		)
 			    		}
 
@@ -75,18 +69,8 @@ class Vip extends React.Component{
 		console.log(match)
 		this.hrefs=match.path
 	}
-
-    componentWillMount (){
-
-    }
     componentDidMount (){
 		this.fetchFns("http://localhost:8006/vip/viplist")
-
-    	console.log(1000000000)
-    }
-    componentDidUpdate (){
-    	console.log(100000001)
-
     }
 	render (){
 		return (
@@ -117,7 +101,7 @@ class Vip extends React.Component{
 									)
 								}else{
 									return (
-										<div>										
+										<div>
 											<Route exact path="/vip" component={vip0} />
 											<Route path="/vip/vip0" component={vip0} />
 											<Route path="/vip/vip1" component={vip1} />
@@ -141,13 +125,13 @@ class Vip extends React.Component{
 	}
 	cks (ev){
 		ev.persist()
-		ev.target.pathname!=window.location.pathname && (this.refs.ranway.children[0].style.top="0px")		
+		ev.target.pathname!=window.location.pathname && (this.refs.ranway.children[0].style.top="0px")
 	}
     fetchFns (url){
     	var datas=null;
         fetch(url)
         .then((data)=>data.json())
-        .then((data)=>{      
+        .then((data)=>{
         	this.setState({
         		headright:data
         	})
@@ -186,8 +170,8 @@ class Logoing extends React.Component{
 			console.log(use)
 			fetch('http://localhost:8006/vip/login',{
 				method:"post",
-		        headers: { 
-		        	"Content-type": "application/x-www-form-urlencoded; charset=UTF-8" 
+		        headers: {
+		        	"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 		        },
 		        body:`user=${use}&pass=${pass}`
 			})
@@ -233,21 +217,23 @@ class Register extends React.Component{
 				&name=${this.refs.name.value}`
 			fetch("http://localhost:8006/vip/addliebiao",{
 	         	method:"post",
-	        	headers: { 
-	        		"Content-type": "application/x-www-form-urlencoded; charset=UTF-8" 
+	        	headers: {
+	        		"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 	        	},
-	         	body:str					
+	         	body:str
 			})
 			.then(data => {
 				if(data.ok){
-					this.props.history.push("/vip")
+            		this.props.history.push("/vip")
+            		return data.json()
 				}
 			})
+      .then((data) => {
+        console.log(data)
+      })
 		}else{
 			alert("全必填")
 		}
-
-
 	}
 	render (){
 		return (
@@ -272,6 +258,3 @@ class Register extends React.Component{
 
 
 export default Vip;
-
-
-

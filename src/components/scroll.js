@@ -1,5 +1,5 @@
     // 滚轮与鼠标点击
-const Sb_down=(objp,objc)=>{ //球触发   父级元素,子元素
+const Sb_down=(objp,objc)=>{ //滚球触发   滚球容器,滚球
     return (ev) => {
         let obj=ev.currentTarget;
         let downY=ev.clientY-GetLandR(obj).T;

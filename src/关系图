@@ -1,0 +1,6 @@
+App/          ::::::: 一级路由
+App/component   ::::::: 二级路由
+App/component/*   ::::::: 三级路由
+App/component/*/*   ::::::: 四级路由
+App/component/*/*/*   ::::::: 五级路由
+

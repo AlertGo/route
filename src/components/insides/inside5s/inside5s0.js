@@ -19,9 +19,7 @@ export default class dateils0 extends React.Component{
 		this.refs.Ball_inside5s0.onmousedown=Sb_down(this.refs.inside5s0_right,this.refs.inside5s0_right.children[0])   	
 		this.refs.inside5s0_box.onmousewheel=ScrollGo(this.refs.inside5s0_right,this.refs.inside5s0_right.children[0],this.refs.Ball_inside5s0.parentNode,this.refs.Ball_inside5s0)
 		this.refs.inside5s0_box.DOMMouseScroll=ScrollGo(this.refs.inside5s0_right,this.refs.inside5s0_right.children[0],this.refs.Ball_inside5s0.parentNode,this.refs.Ball_inside5s0)
-
 	}
-
 	fetchFn (url){
         fetch(url)
         .then((data)=>data.json())

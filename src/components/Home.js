@@ -7,6 +7,7 @@ import {
 import '../Css/home.css'
 /**
   导入css与请求end	*/
+  
 //小组件 中心banner
 class This_img extends React.Component{
 	render (){
@@ -38,10 +39,10 @@ class Home extends React.Component{
 	constructor (){
 		super()
 		this.state={
-			nav:["走进八马","会员专区","营销网络","新闻动态","八马产品","招商加盟"],
-			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3,4]},{con:[1,2,3,4,5,6]}],
-			links:["inside","vip","inside/inside4","news","product","join"],
-			colors:["green","blue","#00CACA","red","#5B00AE"],
+			nav:[],
+			navlist:[],
+			links:[],
+			colors:[],
 			index:0,
 			listdiv:null,
 			title:null,

@@ -58,7 +58,6 @@ class Inside2 extends React.Component{
         fetch(url)
         .then((data)=>data.json())
         .then((data)=>{
-
  			this.setState({
  				title:data
  			})

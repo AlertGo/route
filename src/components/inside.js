@@ -26,7 +26,7 @@ class Inside extends React.Component{
 	constructor ({match}){
 		super()
 		this.state={
-			navlist:[{con:[1,2,3,4,5,6,7,8,9,10]},{con:[1,2,3,4,5,6]},{},{con:[1]},{con:[1,2,3,4]},{con:[1,2,3,4,5,6]}],
+			navlist:[],
 			routes:[{
 				path:"/inside"
 			},{
@@ -55,7 +55,6 @@ class Inside extends React.Component{
     	setTimeout(()=>{
 			if(this.refs.right_btm.children[0].children[1].offsetHeight>=this.refs.right_btm.children[0].children[1].children[0].offsetHeight){
 				this.refs.ranway.classList.remove("block")
-
 			}else{
 				this.refs.ranway.classList.add("block")
 				this.refs.ranway.style.top="0px"
